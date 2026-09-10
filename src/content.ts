@@ -252,6 +252,47 @@ export const conteudo = {
     ],
   },
 
+  mashup: {
+    titulo: 'O mundo',
+    destaque: 'da Vanessa',
+    subtitulo: 'Um resumo pouco científico das coisas que fazem ela feliz.',
+    // ✏️ o que faltar aqui, é só acrescentar um item
+    itens: [
+      {
+        titulo: 'Tubarões',
+        texto: 'Todos os filmes. Sem exceção e sem critério — porque não precisa focar pra assistir.',
+      },
+      {
+        titulo: 'Terror',
+        texto: 'Quanto pior a crítica, melhor a sexta-feira.',
+      },
+      {
+        titulo: 'Jungle',
+        texto: 'A trilha oficial do bom humor dela.',
+      },
+      {
+        titulo: 'Kampeki',
+        texto: 'Em Canoas. Já é mais nosso do que de qualquer outra pessoa.',
+      },
+      {
+        titulo: 'Vinho tinto',
+        texto: 'De preferência três garrafas. De preferência sem motivo nenhum.',
+      },
+      {
+        titulo: 'Livros',
+        texto: 'Ela não "quer ler". Ela lê.',
+      },
+      {
+        titulo: 'Água quente',
+        texto: 'Pedida toda noite. Tomada nunca.',
+      },
+      {
+        titulo: 'Doce',
+        texto: 'Não divide com ninguém. Divide comigo.',
+      },
+    ],
+  },
+
   carta: {
     titulo: 'Uma carta',
     destaque: 'sem pressa',

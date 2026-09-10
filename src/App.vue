@@ -7,6 +7,7 @@
     <DivisorRosa />
     <HistoriaSection />
     <GaleriaSection />
+    <MashupSection />
     <DivisorRosa />
     <MotivosSection />
     <CartaSection />
@@ -23,6 +24,7 @@ import HeroSection from './components/sections/HeroSection.vue'
 import ContadorSection from './components/sections/ContadorSection.vue'
 import HistoriaSection from './components/sections/HistoriaSection.vue'
 import GaleriaSection from './components/sections/GaleriaSection.vue'
+import MashupSection from './components/sections/MashupSection.vue'
 import MotivosSection from './components/sections/MotivosSection.vue'
 import CartaSection from './components/sections/CartaSection.vue'
 import PlaylistSection from './components/sections/PlaylistSection.vue'

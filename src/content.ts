@@ -130,8 +130,8 @@ export const conteudo = {
     destaque: 'em fotos',
     subtitulo: 'Prova documental de que a felicidade tem cara.',
     // ✏️ Manda mais fotos que eu encaixo — a galeria cresce sozinha.
-    // A primeira é horizontal e ocupa a linha inteira; as outras seis fecham
-    // duas linhas de três, sem buraco.
+    // As horizontais viram destaque e ocupam a linha inteira; as verticais
+    // fecham linhas de três. A última, sozinha e centralizada, é proposital.
     fotos: [
       {
         src: 'fotos/rock.webp',
@@ -147,16 +147,41 @@ export const conteudo = {
         foco: 'center 30%',
       },
       {
+        src: 'fotos/careta.webp',
+        legenda: 'A cara que ela faz quando eu peço uma foto séria',
+        alt: 'Vanessa fazendo careta à noite, com as luzes do bar atrás',
+        foco: 'center 42%',
+      },
+      {
         src: 'fotos/terraco.webp',
         legenda: 'Cerveja, óculos escuros e zero pressa',
         alt: 'Vanessa tomando cerveja num terraço à noite',
         foco: 'center 38%',
       },
       {
-        src: 'fotos/careta.webp',
-        legenda: 'A cara que ela faz quando eu peço uma foto séria',
-        alt: 'Vanessa fazendo careta à noite, com as luzes do bar atrás',
-        foco: 'center 42%',
+        src: 'fotos/mercado.webp',
+        legenda: 'Três garrafas e nenhuma culpa',
+        alt: 'Nós dois no mercado segurando garrafas de vinho',
+        destaque: true,
+        foco: 'center 45%',
+      },
+      {
+        src: 'fotos/luz-vermelha.webp',
+        legenda: 'Ela e a luz vermelha do bar',
+        alt: 'Vanessa apoiada na mesa sob uma luz vermelha',
+        foco: 'center 35%',
+      },
+      {
+        src: 'fotos/pier.webp',
+        legenda: 'Camiseta gigante, caneca na mão, dia bom',
+        alt: 'Vanessa em pé num píer de madeira, com a água e as montanhas atrás',
+        foco: 'center 40%',
+      },
+      {
+        src: 'fotos/cinema.webp',
+        legenda: 'Do jeito que ela encosta quando o dia foi longo',
+        alt: 'Nós dois juntos, ela com a cabeça no meu ombro',
+        foco: '42% 50%',
       },
       {
         src: 'fotos/ceu-01.webp',
@@ -171,10 +196,16 @@ export const conteudo = {
         foco: 'center 35%',
       },
       {
-        src: 'fotos/cinema.webp',
-        legenda: 'Do jeito que ela encosta quando o dia foi longo',
-        alt: 'Nós dois juntos, ela com a cabeça no meu ombro',
-        foco: '42% 50%',
+        src: 'fotos/rosto-colado.webp',
+        legenda: 'Bochecha com bochecha, que é como sempre termina',
+        alt: 'Nós dois de rosto colado à noite',
+        foco: 'center 38%',
+      },
+      {
+        src: 'fotos/beijo.webp',
+        legenda: 'Essa é a minha favorita',
+        alt: 'Nós dois nos beijando numa festa, sob luzinhas',
+        foco: 'center 45%',
       },
     ] as Foto[],
   },

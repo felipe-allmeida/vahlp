@@ -9,38 +9,81 @@
       </h2>
       <p class="section-subtitle" v-reveal="80">{{ conteudo.galeria.subtitulo }}</p>
 
-      <div class="galeria__grid">
-        <figure
-          v-for="(foto, i) in conteudo.galeria.fotos"
-          :key="foto.src"
-          class="galeria__item"
-          :class="{ 'galeria__item--destaque': foto.destaque }"
-          v-reveal="i * 80"
-        >
-          <img
-            :src="url(foto.src)"
-            :alt="foto.alt"
-            :style="foto.foco ? { '--foco': foto.foco } : undefined"
-            loading="lazy"
-            @error="esconder"
-          />
-          <figcaption class="galeria__legenda">{{ foto.legenda }}</figcaption>
-        </figure>
-      </div>
+      <article
+        v-for="capitulo in capitulos"
+        :key="capitulo.titulo + capitulo.periodo"
+        class="capitulo"
+      >
+        <header class="capitulo__cabecalho" v-reveal>
+          <p class="capitulo__periodo">{{ capitulo.periodo }}</p>
+          <h3 class="capitulo__titulo">{{ capitulo.titulo }}</h3>
+          <p v-if="capitulo.texto" class="capitulo__texto">{{ capitulo.texto }}</p>
+        </header>
+
+        <div class="galeria__grid">
+          <figure
+            v-for="(foto, i) in capitulo.fotos"
+            :key="foto.src"
+            class="galeria__item"
+            :class="{ 'galeria__item--destaque': foto.destaque }"
+            v-reveal="i * 60"
+          >
+            <img
+              :src="url(foto.src)"
+              :alt="foto.alt"
+              :style="foto.foco ? { '--foco': foto.foco } : undefined"
+              loading="lazy"
+              @error="esconder"
+            />
+            <figcaption class="galeria__legenda">
+              <span v-if="foto.legenda" class="galeria__frase">{{ foto.legenda }}</span>
+              <span v-if="etiqueta(foto)" class="galeria__etiqueta">{{ etiqueta(foto) }}</span>
+            </figcaption>
+          </figure>
+        </div>
+      </article>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import Barbatana from '../ornamentos/Barbatana.vue'
-import { conteudo } from '../../content'
+import { conteudo, type Foto } from '../../content'
 
 const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
 
+/**
+ * Cópia reativa dos capítulos: quando um arquivo some, a foto sai daqui em vez
+ * de o DOM ser mexido na mão — mexer no DOM por baixo do Vue quebra a lista.
+ */
+const capitulos = ref(
+  conteudo.galeria.capitulos.map((c) => ({ ...c, fotos: [...c.fotos] })),
+)
+
+/**
+ * A data vem como 'AAAA-MM-DD' e o Date interpreta isso como meia-noite UTC.
+ * Formatar em UTC evita que 1º de janeiro vire 31 de dezembro no fuso daqui.
+ */
+const formatador = new Intl.DateTimeFormat('pt-BR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+})
+
+/** '25 de abril de 2026 · Praia do Rosa' — o que a foto tiver dos dois. */
+const etiqueta = (foto: Foto) =>
+  [foto.data ? formatador.format(new Date(foto.data)) : null, foto.lugar]
+    .filter(Boolean)
+    .join(' · ')
+
 /** Arquivo faltando não vira ícone quebrado: a foto some da galeria. */
 const esconder = (evento: Event) => {
-  const img = evento.target as HTMLImageElement
-  img.closest('figure')?.remove()
+  const src = (evento.target as HTMLImageElement).getAttribute('src')
+  for (const capitulo of capitulos.value) {
+    capitulo.fotos = capitulo.fotos.filter((f) => url(f.src) !== src)
+  }
 }
 </script>
 
@@ -57,7 +100,6 @@ const esconder = (evento: Event) => {
     flex-wrap: wrap;
     justify-content: center;
     gap: $spacing-sm;
-    margin-top: $spacing-xl;
   }
 
   &__item {
@@ -74,10 +116,12 @@ const esconder = (evento: Event) => {
       flex-basis: 100%;
     }
 
-    // Foto larga (paisagem): ocupa a linha inteira
+    // Foto larga (paisagem): ocupa a linha inteira.
+    // 3/2 e não 16/9 porque o iPhone tira em 4/3 — a faixa mais larga cortava
+    // um quarto da altura e comia rosto nas fotos de grupo.
     &--destaque {
       flex-basis: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 3 / 2;
 
       @media (max-width: $tablet) {
         aspect-ratio: 4 / 3;
@@ -118,11 +162,60 @@ const esconder = (evento: Event) => {
     left: $spacing-sm;
     right: $spacing-sm;
     bottom: $spacing-sm;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  }
+
+  &__frase {
     font-family: $font-display;
     font-size: $font-size-lg;
     font-style: italic;
     color: $cream;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  }
+
+  &__etiqueta {
+    font-size: $font-size-sm;
+    letter-spacing: 0.04em;
+    color: rgba($cream, 0.72);
+  }
+}
+
+.capitulo {
+  margin-top: $spacing-xl;
+
+  &__cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2em;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+  }
+
+  // mesma pauta da data na linha do tempo, pra galeria e história rimarem
+  &__periodo {
+    margin: 0;
+    font-size: $font-size-xs;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $petal;
+  }
+
+  &__titulo {
+    margin: 0;
+    font-family: $font-display;
+    font-size: $font-size-2xl;
+    font-weight: 400;
+  }
+
+  &__texto {
+    max-width: 46ch;
+    margin: 0.4em 0 0;
+    font-size: $font-size-sm;
+    line-height: 1.6;
+    opacity: 0.75;
   }
 }
 </style>

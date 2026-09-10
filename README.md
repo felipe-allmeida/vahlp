@@ -25,10 +25,30 @@ Os campos mais importantes:
 
 ### Trocar as fotos
 
-1. Coloque os arquivos em `public/fotos/` (`.webp` de preferência, até ~1400px de largura).
-2. Referencie em `src/content.ts` como `'fotos/nome-do-arquivo.webp'`.
-3. Se o rosto ficar cortado, ajuste o `foco` da foto (ex.: `foco: 'center 20%'`).
-   Marque `destaque: true` numa foto horizontal para ela ocupar a linha inteira da galeria.
+Coloque os arquivos **originais** do iPhone em `fotos-vah/` e rode:
+
+```bash
+npm run fotos
+```
+
+O script converte tudo para `.webp` em `public/fotos/`, lê **data e GPS** no EXIF,
+nomeia cada arquivo pela data de captura (`2024-06-30-1.webp`), agrupa as fotos
+em capítulos por lugar e época, e imprime um bloco pronto para colar em
+`galeria.capitulos`, no `src/content.ts`.
+
+Detalhes que importam:
+
+- **Use o original.** Foto que passou por WhatsApp ou Telegram perde o EXIF, e aí
+  não tem data nem lugar — ela vai para o fim da lista.
+- **Os nomes dos lugares são um chute** feito a partir das coordenadas, com a
+  tabela `LUGARES` no topo do script. Cada capítulo sai com o GPS num comentário
+  para você conferir e renomear. Nada é enviado para fora da sua máquina.
+- **A lista `IGNORAR`**, também no topo do script, é o que não deve ser importado:
+  fotos que já estão no site com outro nome e quadros repetidos de rajada.
+- Se o rosto ficar cortado, ajuste o `foco` da foto (ex.: `foco: 'center 20%'`).
+  As horizontais viram `destaque: true` e ocupam a linha inteira da galeria.
+- A `legenda` é **opcional**. Sem ela, a foto mostra só data e lugar
+  (`30 de junho de 2024 · Joinville`). Escreva onde valer a pena.
 
 ## Rodando local
 
@@ -63,21 +83,15 @@ funciona em qualquer outra hospedagem estática — Netlify, Vercel, Azure Stati
 Web Apps — apontando para a pasta `dist/`. Nessas, o repositório pode continuar
 privado.
 
-## Nomes de arquivo sugeridos
+## O que ainda espera foto
 
-O `npm run fotos` usa o nome do arquivo original para nomear o webp, então
-renomear antes de importar já deixa tudo encaixado. Sugestões para os
-capítulos que ainda esperam foto:
-
-| Nome do arquivo | Onde entra |
+| Capítulo da história | O que falta |
 | --- | --- |
-| `bucket.jpg` | A festa no rooftop — a foto da certeza e do primeiro "eu te amo" |
-| `sao-paulo.jpg` | O capítulo de São Paulo |
-| `joinville.jpg` | O capítulo de Joinville |
-| `primeiro-encontro.jpg` | O capítulo do Dirty Old Man, se existir foto daquela noite |
+| A festa no rooftop | a foto do bucket hat — a da certeza e do primeiro "eu te amo" |
+| O primeiro encontro | qualquer foto da noite do Dirty Old Man, se existir |
 
-Qualquer outra foto vira item da galeria — o script marca as horizontais como
-`destaque` sozinho, e a galeria aceita qualquer quantidade sem ajuste.
+Basta jogar o arquivo em `fotos-vah/`, rodar `npm run fotos` e apontar o `foto:`
+do marco correspondente em `historia.marcos`.
 
 Se um arquivo referenciado no `content.ts` não existir, a imagem some da
 página em vez de virar ícone quebrado.

@@ -4,3 +4,6 @@ dist
 *.local
 .vscode/*
 !.vscode/extensions.json
+
+# originais do iPhone: pesados e o repositório é público
+fotos-vah

@@ -17,12 +17,30 @@ export interface Marco {
 
 export interface Foto {
   src: string
-  legenda: string
+  /** Descrição para leitor de tela — obrigatória */
   alt: string
+  /** Data de captura (AAAA-MM-DD), lida do EXIF pelo `npm run fotos` */
+  data?: string
+  /** Cidade, deduzida do GPS do EXIF */
+  lugar?: string
+  /**
+   * Linha escrita à mão. Sem ela, a foto mostra só a data e o lugar —
+   * que é o caso da maioria. Escreva onde valer a pena.
+   */
+  legenda?: string
   /** Foto larga: ocupa a linha inteira da galeria */
   destaque?: boolean
   /** Enquadramento, ex.: 'center 20%' */
   foco?: string
+}
+
+export interface Capitulo {
+  titulo: string
+  /** Ex.: '31 de dezembro de 2023' ou '27 de maio a 9 de junho de 2024' */
+  periodo: string
+  /** Uma linha de contexto abaixo do título. Opcional. */
+  texto?: string
+  fotos: Foto[]
 }
 
 export const conteudo = {
@@ -96,14 +114,16 @@ export const conteudo = {
         titulo: 'Eu fui a trabalho. Você foi comigo.',
         texto:
           'Era pra ser viagem de trabalho e virou prédio aceso atrás da gente, cerveja em copo pequeno e você posando em qualquer parede que tivesse luz boa. Trabalhar nunca mais foi tão bom.',
-        // ✏️ a foto dos dois com os prédios de SP entra aqui
+        foto: 'fotos/2024-06-07-1.webp',
+        foco: 'center 40%',
       },
       {
         data: 'Joinville',
         titulo: 'A festa de trabalho que virou viagem favorita',
         texto:
           'Era um evento da tua empresa e virou uma das melhores viagens da minha vida. Descobri que com você até compromisso dos outros vira programa bom.',
-        // ✏️ foto de Joinville entra aqui
+        foto: 'fotos/2024-06-30-2.webp',
+        foco: 'center 40%',
       },
       {
         data: 'Ano passado',
@@ -127,87 +147,621 @@ export const conteudo = {
 
   galeria: {
     titulo: 'A gente',
-    destaque: 'em fotos',
-    subtitulo: 'Prova documental de que a felicidade tem cara.',
-    // ✏️ Manda mais fotos que eu encaixo — a galeria cresce sozinha.
-    // As horizontais viram destaque e ocupam a linha inteira; as verticais
-    // fecham linhas de três. A última, sozinha e centralizada, é proposital.
-    fotos: [
+    destaque: 'em capítulos',
+    subtitulo: 'Cada bloco é um lugar e uma época — a data e a cidade vêm do EXIF das próprias fotos.',
+    // ✏️ Manda mais fotos que eu encaixo: `npm run fotos` lê a data e o GPS
+    //    de cada arquivo e imprime os capítulos prontos pra colar aqui.
+    //    As horizontais viram `destaque` e ocupam a linha inteira.
+    capitulos: [
       {
-        src: 'fotos/rock.webp',
-        legenda: 'Rock in Rio particular',
-        alt: 'Nós dois de jaqueta de couro na beira do mar',
-        destaque: true,
-        foco: 'center 40%',
+        titulo: 'As favoritas',
+        periodo: 'sem data no arquivo',
+        texto: 'Essas vieram antes do resto e não têm EXIF — o original se perdeu no caminho. São as que eu escolheria primeiro de qualquer jeito.',
+        fotos: [
+          {
+            src: 'fotos/rock.webp',
+            alt: 'Nós dois de jaqueta de couro na beira do mar',
+            legenda: 'Rock in Rio particular',
+            destaque: true,
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/retrato.webp',
+            alt: 'Vanessa sorrindo ao sol',
+            legenda: 'O sorriso que eu escolheria de novo',
+            foco: 'center 30%',
+          },
+          {
+            src: 'fotos/careta.webp',
+            alt: 'Vanessa fazendo careta à noite, com as luzes do bar atrás',
+            legenda: 'A cara que ela faz quando eu peço uma foto séria',
+            foco: 'center 42%',
+          },
+          {
+            src: 'fotos/terraco.webp',
+            alt: 'Vanessa tomando cerveja num terraço à noite',
+            legenda: 'Cerveja, óculos escuros e zero pressa',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/mercado.webp',
+            alt: 'Nós dois no mercado segurando garrafas de vinho',
+            legenda: 'Três garrafas e nenhuma culpa',
+            destaque: true,
+            foco: 'center 45%',
+          },
+          {
+            src: 'fotos/cinema.webp',
+            alt: 'Nós dois juntos, ela com a cabeça no meu ombro',
+            legenda: 'Do jeito que ela encosta quando o dia foi longo',
+            foco: '42% 50%',
+          },
+          {
+            src: 'fotos/ceu-02.webp',
+            alt: 'Nós dois rindo sob o céu azul',
+            legenda: 'Rindo de nada, como sempre',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/rosto-colado.webp',
+            alt: 'Nós dois de rosto colado à noite',
+            legenda: 'Bochecha com bochecha, que é como sempre termina',
+            foco: 'center 38%',
+          },
+        ],
       },
       {
-        src: 'fotos/retrato.webp',
-        legenda: 'O sorriso que eu escolheria de novo',
-        alt: 'Vanessa sorrindo ao sol',
-        foco: 'center 30%',
+        // GPS -30.0215, -51.1359 — ✏️ confira se o nome do lugar está certo
+        titulo: 'Os primeiros meses',
+        periodo: '5 de novembro a 9 de dezembro de 2023',
+        texto: 'As fotos mais antigas que sobreviveram com data.',
+        fotos: [
+          {
+            src: 'fotos/2023-11-05-1.webp',
+            alt: 'Vanessa abraçada a um boneco de neon dentro de um bar',
+            data: '2023-11-05',
+            lugar: 'Porto Alegre',
+            destaque: true,
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2023-12-09-1.webp',
+            alt: 'Nós dois numa mesa de bar embaixo de um telhado de zinco',
+            data: '2023-12-09',
+            lugar: 'Porto Alegre',
+            destaque: true,
+            foco: 'center 45%',
+          },
+        ],
       },
       {
-        src: 'fotos/careta.webp',
-        legenda: 'A cara que ela faz quando eu peço uma foto séria',
-        alt: 'Vanessa fazendo careta à noite, com as luzes do bar atrás',
-        foco: 'center 42%',
+        // GPS -29.8087, -50.0380 — ✏️ confira se o nome do lugar está certo
+        titulo: 'Réveillon em Xangri-Lá',
+        periodo: '31 de dezembro de 2023',
+        texto: 'O primeiro ano que a gente virou junto.',
+        fotos: [
+          {
+            src: 'fotos/2023-12-31-1.webp',
+            alt: 'Vanessa de biquíni e chapéu numa cadeira de praia, com um drink na mão',
+            data: '2023-12-31',
+            lugar: 'Xangri-Lá',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2023-12-31-3.webp',
+            alt: 'Vanessa em pé no quiosque de madeira da praia, com um drink',
+            data: '2023-12-31',
+            lugar: 'Xangri-Lá',
+            foco: 'center 55%',
+          },
+          {
+            src: 'fotos/2023-12-31-4.webp',
+            alt: 'Ele carregando ela nas costas na duna, os dois de boné',
+            data: '2023-12-31',
+            lugar: 'Xangri-Lá',
+            foco: 'center 60%',
+          },
+        ],
       },
       {
-        src: 'fotos/terraco.webp',
-        legenda: 'Cerveja, óculos escuros e zero pressa',
-        alt: 'Vanessa tomando cerveja num terraço à noite',
-        foco: 'center 38%',
+        // GPS -30.0377, -51.2221 — ✏️ confira se o nome do lugar está certo
+        titulo: 'O verão de 2024',
+        periodo: '11 de janeiro a 27 de abril de 2024',
+        texto: 'Sem viagem grande, só a vida acontecendo entre Porto Alegre, Canoas e o litoral.',
+        fotos: [
+          {
+            src: 'fotos/2024-01-11-1.webp',
+            alt: 'Vanessa numa mesa de restaurante japonês, hashi na mão',
+            data: '2024-01-11',
+            lugar: 'Canoas',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/2024-02-11-1.webp',
+            alt: 'Nós dois dentro do carro, ela mordiscando alguma coisa',
+            data: '2024-02-11',
+            lugar: 'Balneário Pinhal',
+            foco: 'center 45%',
+          },
+          {
+            src: 'fotos/2024-02-17-1.webp',
+            alt: 'Nós dois num deque de madeira, ela de vestido vermelho com uma água de coco',
+            data: '2024-02-17',
+            lugar: 'Porto Alegre',
+            destaque: true,
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2024-02-26-1.webp',
+            alt: 'Vanessa de chapéu e casaco de crochê, sorrindo de perto',
+            data: '2024-02-26',
+            lugar: 'Porto Alegre',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2024-04-27-1.webp',
+            alt: 'Vanessa na cama com uma taça de vinho tinto, fazendo pose',
+            data: '2024-04-27',
+            lugar: 'Porto Alegre',
+            foco: 'center 45%',
+          },
+        ],
       },
       {
-        src: 'fotos/mercado.webp',
-        legenda: 'Três garrafas e nenhuma culpa',
-        alt: 'Nós dois no mercado segurando garrafas de vinho',
-        destaque: true,
-        foco: 'center 45%',
+        // GPS -23.5800, -46.6600 — ✏️ confira se o nome do lugar está certo
+        titulo: 'São Paulo',
+        periodo: '27 de maio a 9 de junho de 2024',
+        texto: 'A viagem de trabalho que virou viagem.',
+        fotos: [
+          {
+            src: 'fotos/2024-05-27-1.webp',
+            alt: 'Vanessa numa lanchonete de banco vermelho, com um suco de laranja',
+            data: '2024-05-27',
+            lugar: 'São Paulo',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/2024-05-30-1.webp',
+            alt: 'Vanessa de jaqueta jeans num parque, olhando o celular',
+            data: '2024-05-30',
+            lugar: 'São Paulo',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2024-06-02-1.webp',
+            alt: 'Vanessa tomando cerveja num bar de parede de tijolos',
+            data: '2024-06-02',
+            lugar: 'São Paulo',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/2024-06-02-2.webp',
+            alt: 'Vanessa bebendo de copo alto, jaqueta jeans caída no ombro',
+            data: '2024-06-02',
+            lugar: 'São Paulo',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2024-06-02-3.webp',
+            alt: 'Nós dois abraçados no bar, ela rindo',
+            data: '2024-06-02',
+            lugar: 'São Paulo',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2024-06-02-4.webp',
+            alt: 'Vanessa numa escada inteira iluminada de vermelho',
+            data: '2024-06-02',
+            lugar: 'São Paulo',
+            foco: 'center 45%',
+          },
+          {
+            src: 'fotos/2024-06-07-1.webp',
+            alt: 'Nós dois à noite, ele beijando o rosto dela, com os prédios acesos atrás',
+            data: '2024-06-07',
+            lugar: 'São Paulo',
+            legenda: 'Prédio aceso atrás da gente — foi essa noite',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2024-06-09-1.webp',
+            alt: 'Vanessa numa mesa de restaurante, com as sobremesas na frente',
+            data: '2024-06-09',
+            lugar: 'São Paulo',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/2024-06-09-2.webp',
+            alt: 'Vanessa comendo a sobremesa de colher',
+            data: '2024-06-09',
+            lugar: 'São Paulo',
+            foco: 'center 38%',
+          },
+        ],
       },
       {
-        src: 'fotos/luz-vermelha.webp',
-        legenda: 'Ela e a luz vermelha do bar',
-        alt: 'Vanessa apoiada na mesa sob uma luz vermelha',
-        foco: 'center 35%',
+        // GPS -27.5981, -48.4989 — ✏️ confira se o nome do lugar está certo
+        titulo: 'Florianópolis, na volta',
+        periodo: '9 de junho de 2024',
+        fotos: [
+          {
+            src: 'fotos/2024-06-09-3.webp',
+            alt: 'Nós dois numa selfie na rua, ele de boné vermelho e óculos escuros',
+            data: '2024-06-09',
+            lugar: 'Florianópolis',
+            foco: 'center 40%',
+          },
+        ],
       },
       {
-        src: 'fotos/pier.webp',
-        legenda: 'Camiseta gigante, caneca na mão, dia bom',
-        alt: 'Vanessa em pé num píer de madeira, com a água e as montanhas atrás',
-        foco: 'center 40%',
+        // GPS -26.2131, -49.2946 — ✏️ confira se o nome do lugar está certo
+        titulo: 'Joinville',
+        periodo: '29 a 30 de junho de 2024',
+        texto: 'A festa de trabalho da empresa dela que virou uma das melhores viagens da minha vida. Teve bingo.',
+        fotos: [
+          {
+            src: 'fotos/2024-06-29-1.webp',
+            alt: 'Uma cartela de bingo marcada de verde',
+            data: '2024-06-29',
+            lugar: 'Joinville',
+            legenda: 'O bingo. A gente levou a sério.',
+            foco: 'center 50%',
+          },
+          {
+            src: 'fotos/2024-06-29-2.webp',
+            alt: 'Outra cartela de bingo, quase completa',
+            data: '2024-06-29',
+            lugar: 'Joinville',
+            foco: 'center 50%',
+          },
+          {
+            src: 'fotos/2024-06-30-1.webp',
+            alt: 'Um eucaliptal visto de baixo, contra o céu azul',
+            data: '2024-06-30',
+            lugar: 'Joinville',
+            foco: 'center 50%',
+          },
+          {
+            src: 'fotos/2024-06-30-2.webp',
+            alt: 'Vanessa no meio do mato, de casaco cinza',
+            data: '2024-06-30',
+            lugar: 'Joinville',
+            foco: 'center 40%',
+          },
+        ],
       },
       {
-        src: 'fotos/cinema.webp',
-        legenda: 'Do jeito que ela encosta quando o dia foi longo',
-        alt: 'Nós dois juntos, ela com a cabeça no meu ombro',
-        foco: '42% 50%',
+        // GPS -30.0377, -51.2221 — ✏️ confira se o nome do lugar está certo
+        titulo: 'O inverno de 2024',
+        periodo: '6 de julho a 17 de agosto de 2024',
+        fotos: [
+          {
+            src: 'fotos/2024-07-06-1.webp',
+            alt: 'Vanessa numa mesa de bar com as mãos na cabeça',
+            data: '2024-07-06',
+            lugar: 'Porto Alegre',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/2024-07-06-2.webp',
+            alt: 'Vanessa erguendo uma taça de vinho tinto',
+            data: '2024-07-06',
+            lugar: 'Porto Alegre',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/2024-07-20-1.webp',
+            alt: 'Vanessa fazendo dois vs e mostrando a língua, com gente atrás',
+            data: '2024-07-20',
+            lugar: 'Porto Alegre',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2024-07-20-2.webp',
+            alt: 'Vanessa descendo um caminho de pedra à noite',
+            data: '2024-07-20',
+            lugar: 'Porto Alegre',
+            foco: 'center 50%',
+          },
+          {
+            src: 'fotos/2024-07-21-1.webp',
+            alt: 'Vanessa rindo ao lado de um patinete na rua',
+            data: '2024-07-21',
+            lugar: 'Porto Alegre',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2024-08-10-1.webp',
+            alt: 'Nós e os amigos embaixo das luzinhas',
+            data: '2024-08-10',
+            lugar: 'Porto Alegre',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2024-08-10-3.webp',
+            alt: 'Os quatro na saída, na frente do portão',
+            data: '2024-08-10',
+            lugar: 'Porto Alegre',
+            foco: 'center 45%',
+          },
+          {
+            src: 'fotos/2024-08-17-1.webp',
+            alt: 'Vanessa no hall do prédio com uma garrafa de vinho na mão',
+            data: '2024-08-17',
+            lugar: 'Porto Alegre',
+            foco: 'center 38%',
+          },
+        ],
       },
       {
-        src: 'fotos/ceu-01.webp',
-        legenda: 'Céu azul e a gente',
-        alt: 'Nós dois sob o céu azul',
-        foco: 'center 32%',
+        // GPS -29.9846, -51.1235 — ✏️ confira se o nome do lugar está certo
+        titulo: 'Canoas, em família',
+        periodo: '8 de setembro de 2024',
+        texto: 'Uma noite inteira num rolo só de foto.',
+        fotos: [
+          {
+            src: 'fotos/2024-09-08-1.webp',
+            alt: 'Selfie de família, todo mundo espremido no quadro',
+            data: '2024-09-08',
+            lugar: 'Canoas',
+            destaque: true,
+            foco: 'center 50%',
+          },
+          {
+            src: 'fotos/2024-09-08-3.webp',
+            alt: 'Ele carregando ela no colo na cozinha, taça de vinho na mão',
+            data: '2024-09-08',
+            lugar: 'Canoas',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2024-09-08-4.webp',
+            alt: 'Vanessa brindando com uma taça de vinho',
+            data: '2024-09-08',
+            lugar: 'Canoas',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2024-09-08-5.webp',
+            alt: 'Duas delas de rosto colado, taças na mão',
+            data: '2024-09-08',
+            lugar: 'Canoas',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2024-09-08-6.webp',
+            alt: 'Vanessa entre duas mulheres da família, taça na mão',
+            data: '2024-09-08',
+            lugar: 'Canoas',
+            foco: 'center 35%',
+          },
+        ],
       },
       {
-        src: 'fotos/ceu-02.webp',
-        legenda: 'Rindo de nada, como sempre',
-        alt: 'Nós dois rindo sob o céu azul',
-        foco: 'center 35%',
+        // GPS -30.0258, -51.1630 — ✏️ confira se o nome do lugar está certo
+        titulo: 'O fim de 2024',
+        periodo: '14 de setembro a 14 de novembro de 2024',
+        fotos: [
+          {
+            src: 'fotos/2024-09-14-1.webp',
+            alt: 'Vanessa apresentando um drink na mesa do restaurante',
+            data: '2024-09-14',
+            lugar: 'Porto Alegre',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/2024-10-20-1.webp',
+            alt: 'Vanessa de chapéu numa loja de óculos, parede amarela atrás',
+            data: '2024-10-20',
+            lugar: 'Porto Alegre',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2024-11-03-1.webp',
+            alt: 'Nós dois fantasiados: ele de máscara de porco, ela com um facão',
+            data: '2024-11-03',
+            lugar: 'Porto Alegre',
+            legenda: 'O terror também é hobby dela',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2024-11-03-2.webp',
+            alt: 'As mesmas fantasias, outra pose na escada',
+            data: '2024-11-03',
+            lugar: 'Porto Alegre',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2024-11-14-1.webp',
+            alt: 'Vanessa numa mesa de café, com cerveja e pão de queijo na bandeja',
+            data: '2024-11-14',
+            foco: 'center 40%',
+          },
+        ],
       },
       {
-        src: 'fotos/rosto-colado.webp',
-        legenda: 'Bochecha com bochecha, que é como sempre termina',
-        alt: 'Nós dois de rosto colado à noite',
-        foco: 'center 38%',
+        // GPS -30.0377, -51.2221 — ✏️ confira se o nome do lugar está certo
+        titulo: '2025',
+        periodo: '19 de abril a 20 de novembro de 2025',
+        texto: 'O ano inteiro em dez fotos. O buraco entre novembro de 2024 e abril fala por si.',
+        fotos: [
+          {
+            src: 'fotos/2025-04-19-1.webp',
+            alt: 'Nós dois num bar, ele de chapéu preto e ela de verde',
+            data: '2025-04-19',
+            lugar: 'Porto Alegre',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/2025-05-01-1.webp',
+            alt: 'Selfie no espelho, os dois de touca',
+            data: '2025-05-01',
+            lugar: 'Porto Alegre',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2025-05-30-1.webp',
+            alt: 'Vanessa deitada com o cachorro do lado do rosto',
+            data: '2025-05-30',
+            lugar: 'Porto Alegre',
+            legenda: 'Os dois com a mesma cara',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2025-06-22-1.webp',
+            alt: 'Vanessa de perto, mostrando a língua',
+            data: '2025-06-22',
+            lugar: 'Canoas',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2025-06-22-2.webp',
+            alt: 'Vanessa de moletom cinza, posando na sala',
+            data: '2025-06-22',
+            lugar: 'Canoas',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2025-07-27-1.webp',
+            alt: 'Vanessa de jaqueta jeans mandando os dois dedos',
+            data: '2025-07-27',
+            lugar: 'Porto Alegre',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2025-08-16-1.webp',
+            alt: 'Selfie dos dois, ele de gorro roxo e ela de língua para fora',
+            data: '2025-08-16',
+            lugar: 'Porto Alegre',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2025-08-23-1.webp',
+            alt: 'Nós dois arrumados, ela chutando o ar e ele de terno',
+            data: '2025-08-23',
+            lugar: 'Porto Alegre',
+            foco: 'center 45%',
+          },
+          {
+            src: 'fotos/2025-11-20-1.webp',
+            alt: 'Nós dois de rosto colado na rua, com o prédio aceso atrás',
+            data: '2025-11-20',
+            lugar: 'Porto Alegre',
+            foco: 'center 38%',
+          },
+        ],
       },
       {
-        src: 'fotos/beijo.webp',
-        legenda: 'Essa é a minha favorita',
-        alt: 'Nós dois nos beijando numa festa, sob luzinhas',
-        foco: 'center 45%',
+        // GPS -29.9557, -50.9216 — ✏️ confira se o nome do lugar está certo
+        titulo: 'A virada de 2026',
+        periodo: '1 de janeiro a 16 de março de 2026',
+        fotos: [
+          {
+            src: 'fotos/beijo.webp',
+            alt: 'Nós dois nos beijando numa festa, sob luzinhas',
+            data: '2026-01-01',
+            lugar: 'Taquara',
+            legenda: 'Essa é a minha favorita',
+            foco: 'center 45%',
+          },
+          {
+            src: 'fotos/luz-vermelha.webp',
+            alt: 'Vanessa apoiada na mesa sob uma luz vermelha',
+            data: '2026-03-16',
+            lugar: 'Porto Alegre',
+            legenda: 'Ela e a luz vermelha do bar',
+            foco: 'center 35%',
+          },
+        ],
       },
-    ] as Foto[],
+      {
+        // GPS -28.1150, -48.6520 — ✏️ confira se o nome do lugar está certo
+        titulo: 'Praia do Rosa',
+        periodo: '25 a 26 de abril de 2026',
+        texto: 'Dois dias em Santa Catarina, metade deles à mesa.',
+        fotos: [
+          {
+            src: 'fotos/2026-04-25-1.webp',
+            alt: 'Vanessa de braços para o alto na frente de um painel colorido',
+            data: '2026-04-25',
+            lugar: 'Praia do Rosa',
+            foco: 'center 35%',
+          },
+          {
+            src: 'fotos/2026-04-25-2.webp',
+            alt: 'Um porta-retrato e um chocolate em cima da mesa de madeira',
+            data: '2026-04-25',
+            lugar: 'Praia do Rosa',
+            foco: 'center 50%',
+          },
+          {
+            src: 'fotos/pier.webp',
+            alt: 'Vanessa em pé num píer de madeira, com a água e as montanhas atrás',
+            data: '2026-04-25',
+            lugar: 'Praia do Rosa',
+            legenda: 'Camiseta gigante, caneca na mão, dia bom',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2026-04-25-3.webp',
+            alt: 'Vanessa comendo um pastel no bar da praia',
+            data: '2026-04-25',
+            lugar: 'Praia do Rosa',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2026-04-26-1.webp',
+            alt: 'Um waffle com morango e calda de chocolate',
+            data: '2026-04-26',
+            lugar: 'Praia do Rosa',
+            foco: 'center 50%',
+          },
+          {
+            src: 'fotos/2026-04-26-2.webp',
+            alt: 'Uma sobremesa de morango servida numa tábua',
+            data: '2026-04-26',
+            lugar: 'Praia do Rosa',
+            foco: 'center 50%',
+          },
+          {
+            src: 'fotos/2026-04-26-3.webp',
+            alt: 'Vanessa de moletom e óculos escuros, no celular',
+            data: '2026-04-26',
+            lugar: 'Tubarão',
+            foco: 'center 40%',
+          },
+        ],
+      },
+      {
+        // GPS -29.9847, -51.1240 — ✏️ confira se o nome do lugar está certo
+        titulo: 'O ano até aqui',
+        periodo: '7 de junho a 23 de agosto de 2026',
+        fotos: [
+          {
+            src: 'fotos/2026-06-07-1.webp',
+            alt: 'Um grupo fazendo chifrinho para a câmera',
+            data: '2026-06-07',
+            lugar: 'Canoas',
+            foco: 'center 40%',
+          },
+          {
+            src: 'fotos/2026-08-09-1.webp',
+            alt: 'Vanessa tomando um cappuccino num pátio verde',
+            data: '2026-08-09',
+            lugar: 'Porto Alegre',
+            foco: 'center 38%',
+          },
+          {
+            src: 'fotos/ceu-01.webp',
+            alt: 'Nós dois sob o céu azul',
+            data: '2026-08-23',
+            lugar: 'Porto Alegre',
+            legenda: 'Céu azul e a gente',
+            foco: 'center 32%',
+          },
+        ],
+      },
+    ] as Capitulo[],
   },
 
   motivos: {

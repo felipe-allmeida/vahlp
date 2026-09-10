@@ -41,16 +41,17 @@ npm run preview  # serve o build
 
 ## Publicando
 
-Criando o repositório e subindo:
+Subindo para o repositório:
 
 ```bash
-gh repo create trinta-e-quatro --public --source=. --remote=origin --push
+git remote add origin https://github.com/felipe-allmeida/vahlp.git
+git push -u origin main
 ```
 
 O deploy vai para o **GitHub Pages** automaticamente a cada push na `main`,
 pelo workflow em `.github/workflows/deploy.yml`. Para ativar (só na primeira
 vez): **Settings → Pages → Source: GitHub Actions**. O endereço fica em
-`https://<usuario>.github.io/trinta-e-quatro/`.
+`https://felipe-allmeida.github.io/vahlp/`.
 
 > Repositório público é o que o GitHub Pages exige no plano gratuito — ou seja,
 > o código e as fotos ficam visíveis para quem tiver o link do repositório.

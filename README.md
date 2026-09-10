@@ -41,13 +41,23 @@ npm run preview  # serve o build
 
 ## Publicando
 
-O deploy vai para o **GitHub Pages** automaticamente a cada push na `main`,
-pelo workflow em `.github/workflows/deploy.yml`.
+Criando o repositório e subindo:
 
-Para ativar (só na primeira vez): **Settings → Pages → Source: GitHub Actions**.
+```bash
+gh repo create trinta-e-quatro --public --source=. --remote=origin --push
+```
+
+O deploy vai para o **GitHub Pages** automaticamente a cada push na `main`,
+pelo workflow em `.github/workflows/deploy.yml`. Para ativar (só na primeira
+vez): **Settings → Pages → Source: GitHub Actions**. O endereço fica em
+`https://<usuario>.github.io/trinta-e-quatro/`.
+
+> Repositório público é o que o GitHub Pages exige no plano gratuito — ou seja,
+> o código e as fotos ficam visíveis para quem tiver o link do repositório.
+> A página em si tem `noindex, nofollow` no `<head>`, então não aparece em
+> buscadores, mas isso não a torna privada.
 
 O `vite.config.ts` usa `base: './'` (caminhos relativos), então o build também
 funciona em qualquer outra hospedagem estática — Netlify, Vercel, Azure Static
-Web Apps — apontando para a pasta `dist/`.
-
-> A página tem `noindex, nofollow` no `<head>` — ela não aparece em buscadores.
+Web Apps — apontando para a pasta `dist/`. Nessas, o repositório pode continuar
+privado.

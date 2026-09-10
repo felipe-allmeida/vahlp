@@ -117,6 +117,8 @@ export const conteudo = {
     destaque: 'em fotos',
     subtitulo: 'Prova documental de que a felicidade tem cara.',
     // ✏️ Manda mais fotos que eu encaixo — a galeria cresce sozinha.
+    // A primeira é horizontal e ocupa a linha inteira; as outras seis fecham
+    // duas linhas de três, sem buraco.
     fotos: [
       {
         src: 'fotos/rock.webp',
@@ -132,6 +134,18 @@ export const conteudo = {
         foco: 'center 30%',
       },
       {
+        src: 'fotos/careta.webp',
+        legenda: 'A cara que ela faz quando eu peço uma foto séria',
+        alt: 'Vanessa fazendo careta à noite, com as luzes do bar atrás',
+        foco: 'center 42%',
+      },
+      {
+        src: 'fotos/terraco.webp',
+        legenda: 'Cerveja, óculos escuros e zero pressa',
+        alt: 'Vanessa tomando cerveja num terraço à noite',
+        foco: 'center 38%',
+      },
+      {
         src: 'fotos/ceu-01.webp',
         legenda: 'Céu azul e a gente',
         alt: 'Nós dois sob o céu azul',
@@ -142,6 +156,12 @@ export const conteudo = {
         legenda: 'Rindo de nada, como sempre',
         alt: 'Nós dois rindo sob o céu azul',
         foco: 'center 35%',
+      },
+      {
+        src: 'fotos/cinema.webp',
+        legenda: 'Do jeito que ela encosta quando o dia foi longo',
+        alt: 'Nós dois juntos, ela com a cabeça no meu ombro',
+        foco: '42% 50%',
       },
     ] as Foto[],
   },

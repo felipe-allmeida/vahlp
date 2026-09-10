@@ -1,0 +1,62 @@
+<template>
+  <FundoAurora />
+
+  <main class="pagina">
+    <HeroSection />
+    <ContadorSection />
+    <HistoriaSection />
+    <GaleriaSection />
+    <MotivosSection />
+    <CartaSection />
+    <PlaylistSection />
+    <FinalSection />
+  </main>
+</template>
+
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import FundoAurora from './components/FundoAurora.vue'
+import HeroSection from './components/sections/HeroSection.vue'
+import ContadorSection from './components/sections/ContadorSection.vue'
+import HistoriaSection from './components/sections/HistoriaSection.vue'
+import GaleriaSection from './components/sections/GaleriaSection.vue'
+import MotivosSection from './components/sections/MotivosSection.vue'
+import CartaSection from './components/sections/CartaSection.vue'
+import PlaylistSection from './components/sections/PlaylistSection.vue'
+import FinalSection from './components/sections/FinalSection.vue'
+import { conteudo } from './content'
+
+onMounted(() => {
+  document.title = `${conteudo.idade} anos de ${conteudo.nome} 💛`
+})
+</script>
+
+<style lang="scss">
+@use './styles/variables' as *;
+
+.pagina {
+  position: relative;
+  z-index: 1;
+}
+
+// Animação de revelação usada pela diretiva v-reveal
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+
+  &--in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>

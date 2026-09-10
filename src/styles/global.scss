@@ -1,0 +1,116 @@
+@use './variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $ink;
+  color: $cream;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+::selection {
+  background: rgba($rose, 0.35);
+  color: $cream;
+}
+
+// Container utilitário
+.container {
+  width: 100%;
+  max-width: $large-desktop;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  @media (max-width: $tablet) {
+    padding: 0 $spacing-sm;
+  }
+}
+
+// Texto com gradiente
+.gradient-text {
+  background: $grad;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+// Título de seção
+.section-title {
+  font-family: $font-display;
+  font-size: clamp(2rem, 5vw, $font-size-5xl);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.section-subtitle {
+  max-width: 34rem;
+  margin: $spacing-sm auto 0;
+  color: $muted;
+  font-size: $font-size-lg;
+  text-align: center;
+
+  @media (max-width: $tablet) {
+    font-size: $font-size-base;
+  }
+}
+
+// Etiqueta pequena acima dos títulos
+.eyebrow {
+  display: block;
+  text-align: center;
+  font-size: $font-size-xs;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: $faint;
+  margin-bottom: $spacing-sm;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

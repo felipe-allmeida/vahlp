@@ -88,8 +88,10 @@ export const conteudo = {
         data: 'A festa no rooftop',
         titulo: 'Quando eu tive certeza',
         texto:
-          'Era uma festa que eu tinha organizado pela empresa. Eu deveria estar trabalhando e passei a noite inteira te olhando do outro lado do terraço. Foi ali que eu entendi que era você.',
-        // ✏️ foto do rooftop entra aqui
+          'Uma festa que eu tinha organizado pela empresa, no rooftop do meu prédio. Eu deveria estar trabalhando e passei a noite inteira te olhando do outro lado do terraço. Foi ali que eu entendi que era você.',
+        // ✏️ se esta foto for de outra noite no rooftop, é só trocar o arquivo
+        foto: 'fotos/terraco.webp',
+        foco: 'center 38%',
       },
       {
         data: 'O primeiro eu te amo',
@@ -160,12 +162,6 @@ export const conteudo = {
         foco: 'center 42%',
       },
       {
-        src: 'fotos/terraco.webp',
-        legenda: 'Cerveja, óculos escuros e zero pressa',
-        alt: 'Vanessa tomando cerveja num terraço à noite',
-        foco: 'center 38%',
-      },
-      {
         src: 'fotos/ceu-01.webp',
         legenda: 'Céu azul e a gente',
         alt: 'Nós dois sob o céu azul',
@@ -217,7 +213,7 @@ export const conteudo = {
       'E no karaokê também, sem vergonha nenhuma.',
       'Jungle tocando quando você está de bom humor.',
       'O Kampeki, em Canoas, que já é mais nosso do que de qualquer outra pessoa.',
-      'O teu carinho que chega antes de eu pedir.',
+      'Que você foi pra uma festa a fantasia com um crachá da EVILCORP no peito.',
       'Que você me chama de Tutuba e mais ninguém no mundo faz isso.',
       'Que a gente passou um mês separado ano passado e voltou melhor do que era.',
       'Que eu tive trinta dias pra descobrir como é sem você. Não quero repetir.',

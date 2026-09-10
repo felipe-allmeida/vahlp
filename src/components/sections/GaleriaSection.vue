@@ -46,14 +46,11 @@ const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
   overflow: hidden;
 
   &__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: $spacing-sm;
     margin-top: $spacing-xl;
-
-    @media (max-width: $tablet) {
-      grid-template-columns: 1fr;
-    }
   }
 
   &__item {
@@ -63,10 +60,16 @@ const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
     border: 1px solid $line;
     margin: 0;
     aspect-ratio: 3 / 4;
+    // três por linha, descontando os dois gaps
+    flex: 0 1 calc((100% - #{$spacing-sm} * 2) / 3);
+
+    @media (max-width: $tablet) {
+      flex-basis: 100%;
+    }
 
     // Foto larga (paisagem): ocupa a linha inteira
     &--destaque {
-      grid-column: 1 / -1;
+      flex-basis: 100%;
       aspect-ratio: 16 / 9;
 
       @media (max-width: $tablet) {

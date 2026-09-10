@@ -74,9 +74,15 @@ export const conteudo = {
         titulo: 'Dirty Old Man, Freedom, Glória',
         texto:
           'Marcamos um drink. O drink virou Freedom Pub, o Freedom virou Glória, e nenhum dos dois olhou pro relógio uma vez sequer. Um encontro que virou três no mesmo dia.',
-        // ✏️ trocar por uma foto daquela noite, se existir
-        foto: 'fotos/ceu-02.webp',
-        foco: 'center 40%',
+        // ✏️ se aparecer uma foto daquela noite, ela entra aqui
+      },
+      {
+        data: 'A primeira foto',
+        titulo: 'A mais antiga que eu tenho da gente',
+        texto:
+          'Uma mesa de bar, os amigos em volta, a conta no meio e você do outro lado sorrindo. Não tem nada de especial nessa foto — e ela é a mais importante do meu celular, porque é a primeira em que a gente aparece junto.',
+        foto: 'fotos/primeira-foto.webp',
+        foco: 'center 45%',
       },
       {
         data: 'A festa no rooftop',
@@ -84,6 +90,20 @@ export const conteudo = {
         texto:
           'Era uma festa que eu tinha organizado pela empresa. Eu deveria estar trabalhando e passei a noite inteira te olhando do outro lado do terraço. Foi ali que eu entendi que era você.',
         // ✏️ foto do rooftop entra aqui
+      },
+      {
+        data: 'O primeiro eu te amo',
+        titulo: 'Pôr do sol, bucket hat, sem ensaio',
+        texto:
+          'A gente estava abraçado vendo o sol cair e eu falei antes de conseguir pensar duas vezes. Não teve preparo nem momento certo: teve você me abraçando e eu sem conseguir segurar mais.',
+        // ✏️ a foto do bucket entra aqui: foto: 'fotos/bucket.webp'
+      },
+      {
+        data: 'São Paulo',
+        titulo: 'Eu fui a trabalho. Você foi comigo.',
+        texto:
+          'Era pra ser viagem de trabalho e virou prédio aceso atrás da gente, cerveja em copo pequeno e você posando em qualquer parede que tivesse luz boa. Trabalhar nunca mais foi tão bom.',
+        // ✏️ a foto dos dois com os prédios de SP entra aqui
       },
       {
         data: 'Joinville',

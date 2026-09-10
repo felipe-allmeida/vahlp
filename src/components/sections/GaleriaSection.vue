@@ -22,6 +22,7 @@
             :alt="foto.alt"
             :style="foto.foco ? { '--foco': foto.foco } : undefined"
             loading="lazy"
+            @error="esconder"
           />
           <figcaption class="galeria__legenda">{{ foto.legenda }}</figcaption>
         </figure>
@@ -35,6 +36,12 @@ import Barbatana from '../ornamentos/Barbatana.vue'
 import { conteudo } from '../../content'
 
 const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
+
+/** Arquivo faltando não vira ícone quebrado: a foto some da galeria. */
+const esconder = (evento: Event) => {
+  const img = evento.target as HTMLImageElement
+  img.closest('figure')?.remove()
+}
 </script>
 
 <style scoped lang="scss">

@@ -27,6 +27,7 @@
               :alt="marco.titulo"
               :style="marco.foco ? { '--foco': marco.foco } : undefined"
               loading="lazy"
+              @error="esconder"
             />
           </div>
         </li>
@@ -39,6 +40,11 @@
 import { conteudo } from '../../content'
 
 const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
+
+/** Arquivo faltando não vira ícone quebrado: o capítulo fica só com o texto. */
+const esconder = (evento: Event) => {
+  ;(evento.target as HTMLImageElement).remove()
+}
 </script>
 
 <style scoped lang="scss">

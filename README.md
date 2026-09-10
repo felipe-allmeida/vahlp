@@ -61,3 +61,22 @@ O `vite.config.ts` usa `base: './'` (caminhos relativos), então o build também
 funciona em qualquer outra hospedagem estática — Netlify, Vercel, Azure Static
 Web Apps — apontando para a pasta `dist/`. Nessas, o repositório pode continuar
 privado.
+
+## Nomes de arquivo sugeridos
+
+O `npm run fotos` usa o nome do arquivo original para nomear o webp, então
+renomear antes de importar já deixa tudo encaixado. Sugestões para os
+capítulos que ainda esperam foto:
+
+| Nome do arquivo | Onde entra |
+| --- | --- |
+| `bucket.jpg` | A festa no rooftop — a foto da certeza e do primeiro "eu te amo" |
+| `sao-paulo.jpg` | O capítulo de São Paulo |
+| `joinville.jpg` | O capítulo de Joinville |
+| `primeiro-encontro.jpg` | O capítulo do Dirty Old Man, se existir foto daquela noite |
+
+Qualquer outra foto vira item da galeria — o script marca as horizontais como
+`destaque` sozinho, e a galeria aceita qualquer quantidade sem ajuste.
+
+Se um arquivo referenciado no `content.ts` não existir, a imagem some da
+página em vez de virar ícone quebrado.

@@ -60,7 +60,7 @@ const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
       bottom: 0.5rem;
       left: 0;
       width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba($rose, 0.5), rgba($lilac, 0.5), transparent);
+      background: linear-gradient(to bottom, transparent, rgba($petal, 0.5), rgba($champagne, 0.5), transparent);
     }
 
     @media (max-width: $tablet) {
@@ -85,7 +85,7 @@ const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
     height: 9px;
     border-radius: 50%;
     background: $grad;
-    box-shadow: 0 0 0 5px rgba($rose, 0.12);
+    box-shadow: 0 0 0 5px rgba($petal, 0.12);
 
     @media (max-width: $tablet) {
       left: calc(-1 * #{$spacing-sm} - 4px);
@@ -113,7 +113,7 @@ const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
     font-size: $font-size-xs;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: $rose;
+    color: $petal;
   }
 
   &__titulo {

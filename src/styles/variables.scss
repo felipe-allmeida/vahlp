@@ -1,23 +1,23 @@
-// Paleta — romântico moderno sobre fundo escuro
-$ink: #0b0810;
-$ink-2: #120c18;
-$ink-3: #1a1220;
+// Paleta — rosas brancas, laços pretos e um azul de tubarão
+// (mesmo tema da festa dela)
+$ink: #08080a;      // preto do laço
+$ink-2: #0f0f12;
+$ink-3: #16161b;
 
-$cream: #f7f0ea;
-$muted: rgba(247, 240, 234, 0.58);
-$faint: rgba(247, 240, 234, 0.34);
+$cream: #f8f4ef;    // branco da rosa
+$muted: rgba(248, 244, 239, 0.58);
+$faint: rgba(248, 244, 239, 0.32);
 
-$rose: #f0a3b6;
-$rose-deep: #e0708f;
-$lilac: #b9a3f5;
-$gold: #e9c88e;
+$petal: #ece3d8;    // pétala em meia-luz
+$champagne: #cdb9a2; // sombra quente da pétala
+$shark: #93a9bd;    // azul frio, água funda
 
-$line: rgba(247, 240, 234, 0.1);
-$card: rgba(247, 240, 234, 0.035);
-$card-hover: rgba(247, 240, 234, 0.07);
+$line: rgba(248, 244, 239, 0.11);
+$card: rgba(248, 244, 239, 0.035);
+$card-hover: rgba(248, 244, 239, 0.07);
 
-$grad: linear-gradient(115deg, $rose 0%, $lilac 55%, $gold 100%);
-$grad-soft: linear-gradient(115deg, rgba($rose, 0.16), rgba($lilac, 0.16));
+$grad: linear-gradient(115deg, #ffffff 0%, $petal 32%, $champagne 88%);
+$grad-soft: linear-gradient(115deg, rgba($petal, 0.12), rgba($champagne, 0.1));
 
 // Breakpoints
 $mobile: 480px;

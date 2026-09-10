@@ -1,5 +1,7 @@
 <template>
   <section id="galeria" class="galeria">
+    <Barbatana />
+
     <div class="container">
       <h2 class="section-title" v-reveal>
         {{ conteudo.galeria.titulo }}
@@ -29,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+import Barbatana from '../ornamentos/Barbatana.vue'
 import { conteudo } from '../../content'
 
 const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
@@ -38,7 +41,9 @@ const url = (caminho: string) => `${import.meta.env.BASE_URL}${caminho}`
 @use '../../styles/variables' as *;
 
 .galeria {
+  position: relative;
   padding: $spacing-xl 0;
+  overflow: hidden;
 
   &__grid {
     display: grid;

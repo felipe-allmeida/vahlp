@@ -1,7 +1,8 @@
 <template>
   <section id="final" class="final">
     <div class="container final__conteudo">
-      <p class="final__saudacao" v-reveal>{{ conteudo.final.saudacao }}</p>
+      <Laco class="final__laco" :largura="104" v-reveal />
+      <p class="final__saudacao" v-reveal="40">{{ conteudo.final.saudacao }}</p>
       <h2 class="final__nome gradient-text" v-reveal="80">{{ conteudo.nome }}</h2>
       <p class="final__mensagem" v-reveal="160">{{ conteudo.final.mensagem }}</p>
 
@@ -31,6 +32,7 @@
 
 <script setup lang="ts">
 import { onUnmounted, ref, type CSSProperties } from 'vue'
+import Laco from '../ornamentos/Laco.vue'
 import { conteudo } from '../../content'
 
 interface Coracao {
@@ -39,7 +41,7 @@ interface Coracao {
   estilo: CSSProperties
 }
 
-const EMOJIS = ['💛', '❤️', '💜', '💗', '✨', '🎂']
+const EMOJIS = ['🤍', '🌹', '🖤', '🦈', '✨', '🎂']
 
 const coracoes = ref<Coracao[]>([])
 const revelou = ref(false)
@@ -53,7 +55,7 @@ const soltarCoracoes = () => {
     const duracao = 3.4 + Math.random() * 2.4
     return {
       id: proximoId++,
-      emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)] ?? '💛',
+      emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)] ?? '🤍',
       estilo: {
         left: `${Math.random() * 100}%`,
         fontSize: `${1 + Math.random() * 1.6}rem`,
@@ -96,6 +98,10 @@ onUnmounted(() => timers.forEach((t) => window.clearTimeout(t)))
     text-align: center;
   }
 
+  &__laco {
+    margin-bottom: $spacing-md;
+  }
+
   &__saudacao {
     font-size: $font-size-lg;
     letter-spacing: 0.24em;
@@ -131,11 +137,11 @@ onUnmounted(() => timers.forEach((t) => window.clearTimeout(t)))
     font-size: $font-size-base;
     letter-spacing: 0.02em;
     transition: transform $transition-base, box-shadow $transition-base;
-    box-shadow: 0 12px 34px -14px rgba($rose, 0.85);
+    box-shadow: 0 12px 34px -14px rgba($petal, 0.85);
 
     &:hover {
       transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 18px 44px -14px rgba($rose, 0.95);
+      box-shadow: 0 18px 44px -14px rgba($petal, 0.95);
     }
 
     &:active {

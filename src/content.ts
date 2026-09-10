@@ -33,13 +33,13 @@ export const conteudo = {
   idade: 34,
 
   // ✏️ Aniversário dela (ISO: AAAA-MM-DD). Usado na contagem regressiva.
-  aniversario: '2026-09-24',
+  aniversario: '2026-09-12',
   // ✏️ Dia em que vocês começaram (ISO: AAAA-MM-DD). Usado no contador ao vivo.
   inicioNamoro: '2019-05-18',
 
   hero: {
     sobrenome: '', // ✏️ opcional, aparece em fonte menor sob o nome
-    chamada: 'Hoje o mundo comemora o melhor que já aconteceu com ele.',
+    chamada: 'Rosas brancas, laços pretos e a melhor pessoa que eu conheço fazendo 34.',
     rolar: 'role pra baixo',
   },
 
@@ -162,14 +162,14 @@ export const conteudo = {
       'O teu jeito de pedir desculpa.',
       'A tua força quando tudo desaba.',
       'Como você aprende rápido tudo que te interessa.',
-      'O teu carinho com bicho.',
+      'O teu carinho com bicho — inclusive com os que têm três fileiras de dente.',
       'A tua playlist impecável.',
       'Como você me faz querer ser melhor sem nunca cobrar.',
       'O teu silêncio confortável.',
-      'A tua bagunça organizada.',
+      'A tua bagunça organizada — rosa branca de um lado, tubarão do outro.',
       'Como você comemora as minhas vitórias antes de mim.',
       'O teu gosto pra escolher presente.',
-      'A tua vontade de conhecer o mundo.',
+      'A tua vontade de conhecer o mundo — de preferência com um cilindro nas costas.',
       'Como você me escuta de verdade.',
       'E, principalmente: que você me escolheu.',
     ],
@@ -184,6 +184,7 @@ export const conteudo = {
       'Não porque é mais fácil — não é —, mas porque cada linha aqui foi uma desculpa pra pensar em você por mais um tempo. E pensar em você é o meu hobby favorito.',
       'Trinta e quatro anos. Desses, os melhores são os que eu tive a sorte de assistir de perto. Vi você crescer, mudar de ideia, quebrar e se remontar mais bonita. Vi você conquistar coisas que ninguém acreditava e comemorar como se fosse pouco.',
       'Obrigado por transformar a minha vida num lugar mais leve. Por rir das minhas piadas ruins. Por segurar a minha mão quando eu nem sabia que precisava.',
+      'Rosas brancas com laço preto combinam com você: delicadeza com uma borda afiada. E o tubarão também — porque você nunca soube ficar parada.',
       'Que este ano te traga tudo aquilo que você ainda nem sabe que quer. E que eu esteja lá pra ver.',
     ],
     // ✏️ Sua assinatura
@@ -203,7 +204,7 @@ export const conteudo = {
   final: {
     saudacao: 'Feliz aniversário,',
     mensagem: 'Que venham mais 34. E depois mais 34.',
-    botao: 'Clica aqui 💛',
+    botao: 'Clica aqui 🤍',
     // ✏️ Mensagem que aparece quando ela clica no botão
     surpresa: 'Eu te amo. Muito. Sempre.',
     rodape: 'Feito à mão, com amor (e um pouco de Vue).',

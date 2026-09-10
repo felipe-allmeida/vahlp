@@ -58,7 +58,7 @@ import { conteudo } from '../../content'
 
     &:hover {
       background: $card-hover;
-      border-color: rgba($rose, 0.3);
+      border-color: rgba($petal, 0.3);
       transform: translateY(-2px);
     }
   }

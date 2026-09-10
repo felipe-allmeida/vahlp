@@ -33,7 +33,7 @@ import { conteudo } from '../../content'
     border-radius: $radius-xl;
     border: 1px solid $line;
     background:
-      radial-gradient(120% 100% at 50% 0%, rgba($rose, 0.08), transparent 60%),
+      radial-gradient(120% 100% at 50% 0%, rgba($petal, 0.08), transparent 60%),
       $card;
 
     @media (max-width: $tablet) {
@@ -86,7 +86,7 @@ import { conteudo } from '../../content'
     font-family: $font-display;
     font-style: italic;
     font-size: $font-size-xl;
-    color: $rose;
+    color: $petal;
   }
 }
 </style>

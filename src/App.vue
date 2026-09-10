@@ -1,11 +1,13 @@
 <template>
-  <FundoAurora />
+  <FundoPetalas />
 
   <main class="pagina">
     <HeroSection />
     <ContadorSection />
+    <DivisorRosa />
     <HistoriaSection />
     <GaleriaSection />
+    <DivisorRosa />
     <MotivosSection />
     <CartaSection />
     <PlaylistSection />
@@ -15,7 +17,8 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import FundoAurora from './components/FundoAurora.vue'
+import FundoPetalas from './components/FundoPetalas.vue'
+import DivisorRosa from './components/ornamentos/DivisorRosa.vue'
 import HeroSection from './components/sections/HeroSection.vue'
 import ContadorSection from './components/sections/ContadorSection.vue'
 import HistoriaSection from './components/sections/HistoriaSection.vue'
@@ -27,7 +30,7 @@ import FinalSection from './components/sections/FinalSection.vue'
 import { conteudo } from './content'
 
 onMounted(() => {
-  document.title = `${conteudo.idade} anos de ${conteudo.nome} 💛`
+  document.title = `${conteudo.idade} anos de ${conteudo.nome} 🌹`
 })
 </script>
 

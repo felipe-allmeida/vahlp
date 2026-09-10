@@ -20,6 +20,8 @@
         <span class="hero__anos">anos</span>
       </div>
 
+      <Laco class="hero__laco" :largura="86" />
+
       <p class="hero__chamada">{{ conteudo.hero.chamada }}</p>
     </div>
 
@@ -34,6 +36,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import Laco from '../ornamentos/Laco.vue'
 import { conteudo } from '../../content'
 
 const foto = `${import.meta.env.BASE_URL}fotos/retrato.webp`
@@ -127,7 +130,7 @@ const dataFormatada = computed(() => {
   &__idade {
     display: flex;
     align-items: baseline;
-    gap: $spacing-sm;
+    gap: 0.9rem;
     margin-top: $spacing-md;
     animation: sobe 1s 0.25s $transition-slow both;
   }
@@ -143,17 +146,23 @@ const dataFormatada = computed(() => {
 
   &__anos {
     font-size: $font-size-lg;
+    padding-bottom: 0.35em;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: $muted;
   }
 
+  &__laco {
+    margin-top: $spacing-md;
+    animation: sobe 1s 0.35s $transition-slow both;
+  }
+
   &__chamada {
     max-width: 30rem;
-    margin-top: $spacing-md;
+    margin-top: $spacing-sm;
     color: $muted;
     font-size: $font-size-lg;
-    animation: sobe 1s 0.4s $transition-slow both;
+    animation: sobe 1s 0.5s $transition-slow both;
 
     @media (max-width: $tablet) {
       font-size: $font-size-base;

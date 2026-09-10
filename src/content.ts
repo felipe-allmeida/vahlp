@@ -86,19 +86,10 @@ export const conteudo = {
       },
       {
         data: 'A festa no rooftop',
-        titulo: 'Quando eu tive certeza',
+        titulo: 'Quando eu tive certeza — e falei',
         texto:
-          'Uma festa que eu tinha organizado pela empresa, no rooftop do meu prédio. Eu deveria estar trabalhando e passei a noite inteira te olhando do outro lado do terraço. Foi ali que eu entendi que era você.',
-        // ✏️ se esta foto for de outra noite no rooftop, é só trocar o arquivo
-        foto: 'fotos/terraco.webp',
-        foco: 'center 38%',
-      },
-      {
-        data: 'O primeiro eu te amo',
-        titulo: 'Pôr do sol, bucket hat, sem ensaio',
-        texto:
-          'A gente estava abraçado vendo o sol cair e eu falei antes de conseguir pensar duas vezes. Não teve preparo nem momento certo: teve você me abraçando e eu sem conseguir segurar mais.',
-        // ✏️ a foto do bucket entra aqui: foto: 'fotos/bucket.webp'
+          'Uma festa que eu tinha organizado pela empresa, no rooftop do meu prédio. Eu deveria estar trabalhando e passei a noite inteira te olhando do outro lado do terraço. Foi ali que eu entendi que era você. E foi ali, sem preparo nenhum e sem pensar duas vezes, que eu disse pela primeira vez que te amava.',
+        // ✏️ a foto do bucket hat entra aqui: foto: 'fotos/bucket.webp'
       },
       {
         data: 'São Paulo',
@@ -154,6 +145,12 @@ export const conteudo = {
         legenda: 'O sorriso que eu escolheria de novo',
         alt: 'Vanessa sorrindo ao sol',
         foco: 'center 30%',
+      },
+      {
+        src: 'fotos/terraco.webp',
+        legenda: 'Cerveja, óculos escuros e zero pressa',
+        alt: 'Vanessa tomando cerveja num terraço à noite',
+        foco: 'center 38%',
       },
       {
         src: 'fotos/careta.webp',

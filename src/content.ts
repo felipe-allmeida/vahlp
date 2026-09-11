@@ -55,7 +55,7 @@ export const conteudo = {
 
   hero: {
     sobrenome: 'Zanatta',
-    chamada: 'Rosas brancas, laços pretos e a pessoa mais leal que eu conheço fazendo 34.',
+    chamada: 'Um site de aniversário pro meu xuxu.',
     rolar: 'role pra baixo',
   },
 
@@ -131,8 +131,6 @@ export const conteudo = {
         // ✏️ Se preferir não falar disso na página, é só apagar este bloco inteiro.
         texto:
           'A gente terminou. Durou um mês. Foi tempo suficiente pra eu aprender exatamente o tamanho do buraco que você deixa — e pra gente voltar sabendo o que estava fazendo.',
-        foto: 'fotos/rock.webp',
-        foco: 'center 45%',
       },
       {
         data: 'Hoje',
@@ -158,13 +156,6 @@ export const conteudo = {
         periodo: 'sem data no arquivo',
         texto: 'Essas vieram antes do resto e não têm EXIF — o original se perdeu no caminho. São as que eu escolheria primeiro de qualquer jeito.',
         fotos: [
-          {
-            src: 'fotos/rock.webp',
-            alt: 'Nós dois de jaqueta de couro na beira do mar',
-            legenda: 'Rock in Rio particular',
-            destaque: true,
-            foco: 'center 40%',
-          },
           {
             src: 'fotos/retrato.webp',
             alt: 'Vanessa sorrindo ao sol',
@@ -495,7 +486,7 @@ export const conteudo = {
       },
       {
         // GPS -29.9846, -51.1235 — ✏️ confira se o nome do lugar está certo
-        titulo: 'Canoas, em família',
+        titulo: 'Na casa dela, no Sarandi',
         periodo: '8 de setembro de 2024',
         texto: 'Uma noite inteira num rolo só de foto.',
         fotos: [
@@ -503,7 +494,7 @@ export const conteudo = {
             src: 'fotos/2024-09-08-1.webp',
             alt: 'Selfie de família, todo mundo espremido no quadro',
             data: '2024-09-08',
-            lugar: 'Canoas',
+            lugar: 'Porto Alegre',
             destaque: true,
             foco: 'center 50%',
           },
@@ -511,28 +502,28 @@ export const conteudo = {
             src: 'fotos/2024-09-08-3.webp',
             alt: 'Ele carregando ela no colo na cozinha, taça de vinho na mão',
             data: '2024-09-08',
-            lugar: 'Canoas',
+            lugar: 'Porto Alegre',
             foco: 'center 40%',
           },
           {
             src: 'fotos/2024-09-08-4.webp',
             alt: 'Vanessa brindando com uma taça de vinho',
             data: '2024-09-08',
-            lugar: 'Canoas',
+            lugar: 'Porto Alegre',
             foco: 'center 35%',
           },
           {
             src: 'fotos/2024-09-08-5.webp',
             alt: 'Duas delas de rosto colado, taças na mão',
             data: '2024-09-08',
-            lugar: 'Canoas',
+            lugar: 'Porto Alegre',
             foco: 'center 35%',
           },
           {
             src: 'fotos/2024-09-08-6.webp',
             alt: 'Vanessa entre duas mulheres da família, taça na mão',
             data: '2024-09-08',
-            lugar: 'Canoas',
+            lugar: 'Porto Alegre',
             foco: 'center 35%',
           },
         ],
@@ -611,14 +602,14 @@ export const conteudo = {
             src: 'fotos/2025-06-22-1.webp',
             alt: 'Vanessa de perto, mostrando a língua',
             data: '2025-06-22',
-            lugar: 'Canoas',
+            lugar: 'Porto Alegre',
             foco: 'center 35%',
           },
           {
             src: 'fotos/2025-06-22-2.webp',
             alt: 'Vanessa de moletom cinza, posando na sala',
             data: '2025-06-22',
-            lugar: 'Canoas',
+            lugar: 'Porto Alegre',
             foco: 'center 40%',
           },
           {
@@ -741,7 +732,7 @@ export const conteudo = {
             src: 'fotos/2026-06-07-1.webp',
             alt: 'Um grupo fazendo chifrinho para a câmera',
             data: '2026-06-07',
-            lugar: 'Canoas',
+            lugar: 'Porto Alegre',
             foco: 'center 40%',
           },
           {
@@ -771,24 +762,20 @@ export const conteudo = {
     lista: [
       'O "xuxuuuuuuuuuu" que você estica até acabar o ar.',
       'Que você pede água quente toda noite. E não toma nenhuma.',
-      'Que você não gosta de dividir os teus doces — e mesmo assim sempre divide comigo.',
       'O jeito que você fica boba feliz, sem disfarçar nem um pouco.',
       'Os teus abraços de quando dá tudo certo.',
       'Que a tua ideia de filme perfeito é um tubarão comendo gente.',
       'E que o teu motivo é "não precisa focar pra assistir". Sincera até no descanso.',
-      'Que você encara filme de terror que eu não encaro.',
-      'Que você lê de verdade. Não "quer ler": lê.',
-      'O orgulho que eu sinto quando falo que a minha namorada é analista financeira.',
+      'Que você ama ler.',
+      'O orgulho que eu sinto do quanto você é inteligente.',
       'O quanto você é esforçada — e como você acha que isso é o mínimo.',
-      'A tua inteligência, que aparece bem antes da tua vontade de mostrar.',
       'A tua lealdade. Não a de discurso: a de fato, na hora que conta.',
       'Que você se preocupa com quem você ama antes de se preocupar com você.',
       'Que você me incentiva a ser melhor todo dia sem nunca cobrar nada.',
       'A tua teimosia. Um pouco. (Um pouco.)',
       'Que quando você fica brava você silencia — e me ensinou a esperar em vez de insistir.',
       'Que a gente se achou num aplicativo e ainda assim parece sorte demais.',
-      'O Dirty Old Man, e o encontro que virou três no mesmo dia.',
-      'Que você topou o Freedom, e depois o Glória, sem olhar uma vez pro relógio.',
+      'O Dirty Old Man, que virou Freedom e depois Glória — um encontro que virou três no mesmo dia, sem ninguém olhar pro relógio.',
       'Aquela festa no rooftop, onde eu devia estar trabalhando e só consegui te olhar.',
       'Joinville: festa de trabalho da tua empresa e uma das melhores viagens da minha vida.',
       'Que a gente canta Pump It no carro como se fosse a nossa música. É.',
@@ -799,7 +786,6 @@ export const conteudo = {
       'Que você me chama de Tutuba e mais ninguém no mundo faz isso.',
       'Que a gente passou um mês separado ano passado e voltou melhor do que era.',
       'Que eu tive trinta dias pra descobrir como é sem você. Não quero repetir.',
-      'O jeito baixinho com que você conta as tuas conquistas, como se fossem pouco.',
       'Que você transforma qualquer lugar em casa — inclusive uma casa que ainda não é nossa.',
       'Que o "a gente ainda não mora junto" é a única linha desta lista que eu quero mudar.',
       'E, principalmente: que você me escolheu. Duas vezes.',
@@ -845,21 +831,6 @@ export const conteudo = {
         texto: 'Não divide com ninguém. Divide comigo.',
       },
     ],
-  },
-
-  carta: {
-    titulo: 'Uma carta',
-    destaque: 'sem pressa',
-    paragrafos: [
-      'Eu podia ter comprado um cartão. Escrevi um site.',
-      'Não porque é mais fácil — não é —, mas porque cada linha aqui foi uma desculpa pra pensar em você por mais um tempo. E pensar em você é o meu hobby favorito.',
-      'A gente se conheceu num aplicativo, Vanessa. Podia ter dado em nada, como dá em nada quase sempre. Deu num drink que virou três lugares na mesma noite, numa festa de trabalho onde eu não consegui trabalhar, numa viagem pra Joinville que eu conto até hoje.',
-      'Deu também num mês em que a gente não foi a gente. Eu não vou fingir que aquilo não aconteceu: foi o mês em que eu aprendi, com todas as letras, o tamanho exato da falta que você faz. A gente voltou sabendo. Isso vale mais do que nunca ter saído.',
-      'Trinta e quatro anos. Desses, os melhores são os que eu tive a sorte de assistir de perto. Vi você se dedicar de um jeito que quase ninguém se dedica, contar as tuas conquistas baixinho como se fossem pouco, e continuar sendo a pessoa mais leal que eu conheço mesmo nos dias em que ninguém mereceu.',
-      'Rosas brancas com laço preto combinam com você: delicadeza com uma borda afiada. O tubarão também — e não só porque "não precisa focar pra assistir".',
-      'Obrigado por me incentivar a ser melhor todo santo dia sem nunca cobrar por isso. Que este ano te traga tudo aquilo que você ainda nem sabe que quer. E que eu esteja lá pra ver.',
-    ],
-    assinatura: 'Com todo o meu amor, teu Tutuba',
   },
 
   playlist: {

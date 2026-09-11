@@ -132,16 +132,16 @@ onUnmounted(() => timers.forEach((t) => window.clearTimeout(t)))
     padding: 0.9rem 2.2rem;
     border-radius: $radius-full;
     background: $grad;
-    color: $ink;
+    color: $cream;
     font-weight: 600;
     font-size: $font-size-base;
     letter-spacing: 0.02em;
     transition: transform $transition-base, box-shadow $transition-base;
-    box-shadow: 0 12px 34px -14px rgba($petal, 0.85);
+    box-shadow: 0 12px 34px -14px rgba($mar, 0.55);
 
     &:hover {
       transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 18px 44px -14px rgba($petal, 0.95);
+      box-shadow: 0 18px 44px -14px rgba($mar, 0.7);
     }
 
     &:active {
@@ -154,7 +154,7 @@ onUnmounted(() => timers.forEach((t) => window.clearTimeout(t)))
     min-height: 2.2rem;
     font-family: $font-display;
     font-size: $font-size-2xl;
-    color: $cream;
+    color: $ink;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity $transition-slow, transform $transition-slow;

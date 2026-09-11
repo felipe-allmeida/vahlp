@@ -1,23 +1,39 @@
-// Paleta — rosas brancas, laços pretos e um azul de tubarão
-// (mesmo tema da festa dela)
-$ink: #08080a;      // preto do laço
-$ink-2: #0f0f12;
-$ink-3: #16161b;
+// Paleta — água clara vista de dentro, luz batendo na superfície
+// e um cardume passando devagar lá no fundo.
 
-$cream: #f8f4ef;    // branco da rosa
-$muted: rgba(248, 244, 239, 0.58);
-$faint: rgba(248, 244, 239, 0.32);
+// As quatro profundidades
+$abissal: #06283a;   // o mais escuro que existe aqui: texto
+$mar: #0f5d7e;       // azul médio: acentos, números, eyebrows
+$raso: #74c3d4;      // água rasa iluminada
+$espuma: #eaf6fb;    // espuma perto da superfície
 
-$petal: #ece3d8;    // pétala em meia-luz
-$champagne: #cdb9a2; // sombra quente da pétala
-$shark: #93a9bd;    // azul frio, água funda
+$fundo: #d9ecf5;     // o fundo da página
+$fundo-raso: #eff9fc; // topo, logo abaixo da superfície
+$fundo-fundo: #b9d9e8; // lá embaixo, onde a luz já não chega tão bem
 
-$line: rgba(248, 244, 239, 0.11);
-$card: rgba(248, 244, 239, 0.035);
-$card-hover: rgba(248, 244, 239, 0.07);
+// Nomes antigos, mantidos: $ink continua sendo "o mais escuro" e $cream
+// "o mais claro" — o que mudou é de que lado eles caem.
+$ink: $abissal;
+$ink-2: #0b3a52;
+$ink-3: #124b68;
 
-$grad: linear-gradient(115deg, #ffffff 0%, $petal 32%, $champagne 88%);
-$grad-soft: linear-gradient(115deg, rgba($petal, 0.12), rgba($champagne, 0.1));
+$cream: #fbfeff;
+// Em fundo claro não dá pra ter rótulo quase invisível e legível ao mesmo
+// tempo. A hierarquia aqui vem do tamanho e do espaçamento; estes dois valores
+// existem para passar de 4.5:1 em texto pequeno.
+$muted: rgba(6, 40, 58, 0.78);
+$faint: rgba(6, 40, 58, 0.68);
+
+$petal: $mar;        // era pétala de rosa, agora é o azul dos detalhes
+$champagne: $raso;
+$shark: #4d87a3;     // o cardume
+
+$line: rgba(6, 40, 58, 0.14);
+$card: rgba(255, 255, 255, 0.55);
+$card-hover: rgba(255, 255, 255, 0.82);
+
+$grad: linear-gradient(115deg, #1687b0 0%, $mar 48%, $abissal 100%);
+$grad-soft: linear-gradient(115deg, rgba($raso, 0.3), rgba($mar, 0.12));
 
 // Breakpoints
 $mobile: 480px;
@@ -53,10 +69,10 @@ $radius-lg: 16px;
 $radius-xl: 24px;
 $radius-full: 9999px;
 
-// Shadows
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-$shadow-lg: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
-$shadow-xl: 0 40px 80px -30px rgba(0, 0, 0, 0.85);
+// Shadows — mais suaves: debaixo d'água nada tem sombra dura
+$shadow-md: 0 4px 10px -2px rgba(6, 40, 58, 0.12);
+$shadow-lg: 0 18px 40px -18px rgba(6, 40, 58, 0.3);
+$shadow-xl: 0 40px 80px -30px rgba(6, 40, 58, 0.35);
 
 // Transitions
 $transition-fast: 0.15s ease;

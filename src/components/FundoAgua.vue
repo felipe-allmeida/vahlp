@@ -1,0 +1,251 @@
+<template>
+  <div class="fundo" aria-hidden="true">
+    <!-- a profundidade: claro perto da superfície, mais fundo lá embaixo -->
+    <span class="fundo__profundidade" />
+
+    <!-- luz entrando pela superfície -->
+    <span class="fundo__raio fundo__raio--a" />
+    <span class="fundo__raio fundo__raio--b" />
+    <span class="fundo__raio fundo__raio--c" />
+
+    <!-- o cardume, passando devagar e sem pressa nenhuma -->
+    <div class="fundo__cardume">
+      <Tubarao
+        v-for="t in tubaroes"
+        :key="t.id"
+        class="fundo__tubarao"
+        :largura="t.largura"
+        :style="t.estilo"
+      />
+    </div>
+
+    <!-- pétalas de rosa branca afundando devagar -->
+    <span
+      v-for="petala in petalas"
+      :key="`p${petala.id}`"
+      class="fundo__petala"
+      :style="petala.estilo"
+    />
+
+    <!-- e as bolhas subindo -->
+    <span
+      v-for="bolha in bolhas"
+      :key="`b${bolha.id}`"
+      class="fundo__bolha"
+      :style="bolha.estilo"
+    />
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { CSSProperties } from 'vue'
+import Tubarao from './ornamentos/Tubarao.vue'
+
+/**
+ * Tudo aqui é ornamento: poucos elementos, animação só em transform/opacity, e
+ * o cardume atravessa a tela em minutos, não em segundos. Debaixo d'água nada
+ * tem pressa — e nada disso pode competir com as fotos.
+ */
+
+interface TubaraoDeFundo {
+  id: number
+  largura: number
+  estilo: CSSProperties
+}
+
+/** Profundidade, tamanho e velocidade diferentes: senão parece enfeite repetido. */
+const tubaroes: TubaraoDeFundo[] = [
+  { profundidade: 12, largura: 170, duracao: 78, atraso: -6, opacidade: 0.2, sentido: 1 },
+  { profundidade: 38, largura: 108, duracao: 116, atraso: -44, opacidade: 0.13, sentido: -1 },
+  { profundidade: 63, largura: 230, duracao: 94, atraso: -70, opacidade: 0.16, sentido: 1 },
+  { profundidade: 84, largura: 132, duracao: 134, atraso: -22, opacidade: 0.11, sentido: -1 },
+].map((t, i) => ({
+  id: i,
+  largura: t.largura,
+  estilo: {
+    top: `${t.profundidade}%`,
+    opacity: `${t.opacidade}`,
+    animationDuration: `${t.duracao}s`,
+    animationDelay: `${t.atraso}s`,
+    // o que nada para a esquerda vai espelhado, e começa do outro lado
+    '--sentido': t.sentido,
+  } as CSSProperties,
+}))
+
+interface Enfeite {
+  id: number
+  estilo: CSSProperties
+}
+
+const petalas: Enfeite[] = Array.from({ length: 10 }, (_, i) => ({
+  id: i,
+  estilo: {
+    left: `${(i * 10.7 + (i % 3) * 5) % 100}%`,
+    width: `${7 + (i % 4) * 3}px`,
+    height: `${9 + (i % 4) * 4}px`,
+    animationDuration: `${26 + (i % 5) * 8}s`,
+    animationDelay: `${-i * 3.7}s`,
+    opacity: `${0.5 + (i % 3) * 0.12}`,
+  },
+}))
+
+const bolhas: Enfeite[] = Array.from({ length: 16 }, (_, i) => ({
+  id: i,
+  estilo: {
+    left: `${(i * 6.4 + (i % 5) * 3) % 100}%`,
+    width: `${3 + (i % 4) * 3}px`,
+    height: `${3 + (i % 4) * 3}px`,
+    animationDuration: `${14 + (i % 6) * 5}s`,
+    animationDelay: `${-i * 1.9}s`,
+    opacity: `${0.18 + (i % 4) * 0.08}`,
+  },
+}))
+</script>
+
+<style scoped lang="scss">
+@use '../styles/variables' as *;
+
+.fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.fundo__profundidade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, $fundo-raso 0%, $fundo 42%, $fundo-fundo 100%);
+}
+
+// Feixes de luz atravessando a água, vindos da superfície
+.fundo__raio {
+  position: absolute;
+  top: -30vh;
+  width: 34vw;
+  height: 150vh;
+  background: linear-gradient(to bottom, rgba($cream, 0.72), rgba($cream, 0) 72%);
+  filter: blur(26px);
+  transform-origin: top center;
+  mix-blend-mode: soft-light;
+
+  &--a {
+    left: 4%;
+    animation: oscila 19s ease-in-out infinite;
+  }
+
+  &--b {
+    left: 42%;
+    width: 22vw;
+    opacity: 0.8;
+    animation: oscila 25s ease-in-out infinite reverse;
+  }
+
+  &--c {
+    right: 2%;
+    width: 28vw;
+    opacity: 0.6;
+    animation: oscila 31s ease-in-out infinite;
+  }
+}
+
+.fundo__cardume {
+  position: absolute;
+  inset: 0;
+}
+
+.fundo__tubarao {
+  position: absolute;
+  left: 0;
+  color: $shark;
+  animation-name: atravessa;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: blur(0.4px);
+}
+
+// Pétala de rosa branca: elipse torta, girando enquanto afunda
+.fundo__petala {
+  position: absolute;
+  top: -6%;
+  background: linear-gradient(140deg, #ffffff, rgba($raso, 0.9));
+  border-radius: 60% 40% 55% 45% / 55% 60% 40% 45%;
+  box-shadow: 0 1px 4px rgba($abissal, 0.16);
+  animation-name: afunda;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.fundo__bolha {
+  position: absolute;
+  bottom: -4%;
+  border-radius: 50%;
+  border: 1px solid rgba($cream, 0.9);
+  background: radial-gradient(circle at 32% 30%, rgba($cream, 0.85), rgba($raso, 0.12) 62%);
+  animation-name: sobe-bolha;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+
+// Atravessa a tela inteira; --sentido -1 espelha e inverte o percurso
+@keyframes atravessa {
+  0% {
+    transform: translateX(calc(var(--sentido) * -130vw)) scaleX(var(--sentido)) translateY(0);
+  }
+  50% {
+    transform: translateX(calc(var(--sentido) * -15vw)) scaleX(var(--sentido)) translateY(2.5vh);
+  }
+  100% {
+    transform: translateX(calc(var(--sentido) * 130vw)) scaleX(var(--sentido)) translateY(0);
+  }
+}
+
+@keyframes afunda {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(4vw, 50vh, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate3d(-2vw, 112vh, 0) rotate(360deg);
+  }
+}
+
+@keyframes sobe-bolha {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(2.5vw, -55vh, 0);
+  }
+  100% {
+    transform: translate3d(-1.5vw, -112vh, 0);
+  }
+}
+
+@keyframes oscila {
+  0%,
+  100% {
+    transform: translateX(0) rotate(3deg) scaleX(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateX(3vw) rotate(-2deg) scaleX(1.15);
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fundo__petala,
+  .fundo__bolha,
+  .fundo__tubarao {
+    display: none;
+  }
+
+  .fundo__raio {
+    animation: none;
+  }
+}
+</style>

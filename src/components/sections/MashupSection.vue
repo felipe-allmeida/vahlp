@@ -115,7 +115,7 @@ const cardume: Peixe[] = [
     padding: $spacing-md $spacing-sm;
     border-radius: $radius-lg;
     border: 1px solid $line;
-    background: rgba($ink-2, 0.82);
+    background: $card;
     backdrop-filter: blur(6px);
     transform: rotate(var(--giro, 0deg));
     transition: transform $transition-base, border-color $transition-base;

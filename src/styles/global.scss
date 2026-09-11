@@ -16,8 +16,8 @@ html {
 
 body {
   font-family: $font-body;
-  background-color: $ink;
-  color: $cream;
+  background-color: $fundo;
+  color: $ink;
   line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -44,8 +44,8 @@ ol {
 }
 
 ::selection {
-  background: rgba($petal, 0.35);
-  color: $cream;
+  background: rgba($raso, 0.45);
+  color: $ink;
 }
 
 // Container utilitário

@@ -128,7 +128,7 @@ const pad = (n: number) => String(n).padStart(2, '0')
 
     strong {
       font-weight: 600;
-      color: $cream;
+      color: $ink;
     }
   }
 

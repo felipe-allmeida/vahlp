@@ -72,21 +72,21 @@
 <script setup lang="ts">
 interface Props {
   largura?: number
-  /** Cor do cetim (preto do laço) */
+  /** Cor do cetim — azul-profundo, não preto: preto aqui pesa demais */
   preenchimento?: string
-  /** Brilho da borda, pra o laço não sumir no fundo escuro */
+  /** Brilho da borda, a luz da água batendo no cetim */
   contorno?: string
 }
 withDefaults(defineProps<Props>(), {
   largura: 92,
-  preenchimento: '#0d0d10',
-  contorno: 'rgba(248, 244, 239, 0.62)',
+  preenchimento: '#06283a',
+  contorno: 'rgba(255, 255, 255, 0.72)',
 })
 </script>
 
 <style scoped lang="scss">
 .laco {
   display: block;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
+  filter: drop-shadow(0 6px 14px rgba(6, 40, 58, 0.28));
 }
 </style>

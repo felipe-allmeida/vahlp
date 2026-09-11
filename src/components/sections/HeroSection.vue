@@ -77,8 +77,8 @@ const dataFormatada = computed(() => {
       height: 100%;
       object-fit: cover;
       object-position: center 42%;
-      opacity: 0.32;
-      filter: saturate(0.75) contrast(1.05);
+      opacity: 0.55;
+      filter: saturate(0.7) contrast(1.02);
       animation: hero-zoom 26s ease-in-out infinite alternate;
     }
   }
@@ -87,8 +87,8 @@ const dataFormatada = computed(() => {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse at 50% 45%, transparent 0%, rgba($ink, 0.55) 55%, $ink 88%),
-      linear-gradient(to bottom, rgba($ink, 0.6), rgba($ink, 0.2) 40%, $ink 96%);
+      radial-gradient(ellipse at 50% 45%, rgba($fundo, 0.1) 0%, rgba($fundo, 0.68) 62%, $fundo 92%),
+      linear-gradient(to bottom, rgba($fundo-raso, 0.7), rgba($fundo, 0.35) 38%, $fundo 96%);
   }
 
   &__conteudo {
@@ -188,7 +188,7 @@ const dataFormatada = computed(() => {
     animation: flutua 2.6s ease-in-out infinite;
 
     &:hover {
-      color: $cream;
+      color: $ink;
     }
   }
 }

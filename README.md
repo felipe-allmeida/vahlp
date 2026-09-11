@@ -4,11 +4,16 @@ Uma página feita à mão para comemorar os 34 anos dela.
 
 Vue 3 + TypeScript + Vite + SCSS. Sem dependências de runtime além do Vue.
 
+O tema é água clara vista de dentro: a paleta inteira vive em
+[`src/styles/variables.scss`](src/styles/variables.scss), e o fundo com a luz da
+superfície, as bolhas e o cardume está em
+[`src/components/FundoAgua.vue`](src/components/FundoAgua.vue).
+
 ## Como editar
 
 **Todo o conteúdo da página está em um único arquivo: [`src/content.ts`](src/content.ts).**
 Não é preciso mexer em nenhum componente para personalizar a página — nome, datas,
-timeline, motivos, carta, legendas das fotos e mensagens finais estão todos lá,
+timeline, motivos, legendas das fotos e mensagens finais estão todos lá,
 com os campos obrigatórios marcados com ✏️.
 
 Os campos mais importantes:
@@ -20,7 +25,6 @@ Os campos mais importantes:
 | `inicioNamoro` | Quando vocês começaram (`AAAA-MM-DD`) — alimenta o contador ao vivo |
 | `historia.marcos` | Os capítulos da timeline |
 | `motivos.lista` | As 34 coisas — uma pra cada ano |
-| `carta.paragrafos` | A carta (cada string é um parágrafo) |
 | `playlist.embed` | URL de embed do Spotify. Vazio (`''`) esconde a seção |
 
 ### Trocar as fotos

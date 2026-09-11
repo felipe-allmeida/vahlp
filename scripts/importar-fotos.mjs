@@ -30,7 +30,7 @@ const LUGARES = [
   { nome: 'Porto Alegre', lat: -30.0377, lon: -51.2221 },
   { nome: 'Porto Alegre', lat: -30.0215, lon: -51.1359 },
   { nome: 'Porto Alegre', lat: -30.1296, lon: -51.2241 },
-  { nome: 'Canoas', lat: -29.9846, lon: -51.1235 },
+  { nome: 'Porto Alegre', lat: -29.9846, lon: -51.1235 }, // Sarandi, a casa dela
   { nome: 'Canoas', lat: -29.9146, lon: -51.1874 },
   { nome: 'Xangri-Lá', lat: -29.8087, lon: -50.038 },
   { nome: 'Balneário Pinhal', lat: -30.5408, lon: -50.4195 },

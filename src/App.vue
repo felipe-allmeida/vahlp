@@ -1,5 +1,5 @@
 <template>
-  <FundoPetalas />
+  <FundoAgua />
 
   <main class="pagina">
     <HeroSection />
@@ -10,7 +10,6 @@
     <MashupSection />
     <DivisorRosa />
     <MotivosSection />
-    <CartaSection />
     <PlaylistSection />
     <FinalSection />
   </main>
@@ -18,7 +17,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import FundoPetalas from './components/FundoPetalas.vue'
+import FundoAgua from './components/FundoAgua.vue'
 import DivisorRosa from './components/ornamentos/DivisorRosa.vue'
 import HeroSection from './components/sections/HeroSection.vue'
 import ContadorSection from './components/sections/ContadorSection.vue'
@@ -26,7 +25,6 @@ import HistoriaSection from './components/sections/HistoriaSection.vue'
 import GaleriaSection from './components/sections/GaleriaSection.vue'
 import MashupSection from './components/sections/MashupSection.vue'
 import MotivosSection from './components/sections/MotivosSection.vue'
-import CartaSection from './components/sections/CartaSection.vue'
 import PlaylistSection from './components/sections/PlaylistSection.vue'
 import FinalSection from './components/sections/FinalSection.vue'
 import { conteudo } from './content'

@@ -19,13 +19,13 @@
     <g opacity="0.5">
       <path
         d="M162 44c1.5 3 1.5 9 0 13M169 45c1.5 3 1.5 8 0 11M176 47c1.5 2 1.5 6 0 8"
-        stroke="#08080a"
+        stroke="currentColor"
         stroke-width="1.4"
         stroke-linecap="round"
       />
-      <path d="M188 55c-5 2-10 3-15 3" stroke="#08080a" stroke-width="1.4" stroke-linecap="round" />
+      <path d="M188 55c-5 2-10 3-15 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
     </g>
-    <circle cx="180" cy="46" r="2.2" fill="#08080a" opacity="0.7" />
+    <circle cx="180" cy="46" r="2.2" fill="currentColor" opacity="0.7" />
   </svg>
 </template>
 

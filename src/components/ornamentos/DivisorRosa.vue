@@ -25,12 +25,12 @@ import Rosa from './Rosa.vue'
   &__linha {
     flex: 1;
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba($cream, 0.22), transparent);
+    background: linear-gradient(to right, transparent, rgba($mar, 0.28), transparent);
   }
 
   &__rosa {
     flex-shrink: 0;
-    color: rgba($cream, 0.5);
+    color: rgba($mar, 0.55);
   }
 }
 </style>

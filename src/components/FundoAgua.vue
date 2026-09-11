@@ -1,12 +1,29 @@
 <template>
   <div class="fundo" aria-hidden="true">
+    <!-- o mundo de cima: céu de praia, visível enquanto não se mergulha -->
+    <span class="fundo__ceu" />
+    <Praia />
+
     <!-- a profundidade: claro perto da superfície, mais fundo lá embaixo -->
     <span class="fundo__profundidade" />
 
+    <!-- o mar: a superfície e a massa de água embaixo dela, subindo junto -->
+    <div class="fundo__mar">
+      <svg class="fundo__onda" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M0 62c90-26 190-26 280 0s190 26 280 0 190-26 280 0 190 26 280 0 80-14 80-14V120H0Z"
+          fill="currentColor"
+        />
+      </svg>
+      <span class="fundo__massa" />
+    </div>
+
     <!-- luz entrando pela superfície -->
-    <span class="fundo__raio fundo__raio--a" />
-    <span class="fundo__raio fundo__raio--b" />
-    <span class="fundo__raio fundo__raio--c" />
+    <div class="fundo__raios">
+      <span class="fundo__raio fundo__raio--a" />
+      <span class="fundo__raio fundo__raio--b" />
+      <span class="fundo__raio fundo__raio--c" />
+    </div>
 
     <!-- o cardume, passando devagar e sem pressa nenhuma -->
     <div class="fundo__cardume">
@@ -27,19 +44,22 @@
       :style="petala.estilo"
     />
 
-    <!-- e as bolhas subindo -->
-    <span
-      v-for="bolha in bolhas"
-      :key="`b${bolha.id}`"
-      class="fundo__bolha"
-      :style="bolha.estilo"
-    />
+    <!-- e as bolhas subindo, que só existem debaixo d'água -->
+    <div class="fundo__bolhas">
+      <span
+        v-for="bolha in bolhas"
+        :key="`b${bolha.id}`"
+        class="fundo__bolha"
+        :style="bolha.estilo"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
 import Tubarao from './ornamentos/Tubarao.vue'
+import Praia from './Praia.vue'
 
 /**
  * Tudo aqui é ornamento: poucos elementos, animação só em transform/opacity, e
@@ -117,6 +137,48 @@ const bolhas: Enfeite[] = Array.from({ length: 16 }, (_, i) => ({
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom, $fundo-raso 0%, $fundo 42%, $fundo-fundo 100%);
+  opacity: var(--profundidade, 0);
+}
+
+// Céu de praia: luz quente no horizonte, azul mais firme em cima
+.fundo__ceu {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #a8d7ee 0%, #cfe8f4 44%, #f3e8cd 82%, #f6ecd6 100%);
+}
+
+// O mar começa baixo, na beira da areia, e sobe até engolir a tela inteira
+// conforme a pessoa desce. É a travessia da superfície.
+.fundo__mar {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  top: 94%;
+  height: 170vh;
+  transform: translateY(calc(var(--profundidade, 0) * -112vh));
+}
+
+.fundo__onda {
+  display: block;
+  width: 100%;
+  height: 9vh;
+  color: #9ed3e6;
+}
+
+.fundo__massa {
+  display: block;
+  height: 140vh;
+  margin-top: -2px; // encosta na onda: sem isso sobra um fio claro na emenda
+  background: linear-gradient(to bottom, #9ed3e6 0%, $fundo 24%, $fundo-fundo 100%);
+}
+
+// Tudo que só existe submerso entra junto com a profundidade
+.fundo__raios,
+.fundo__cardume,
+.fundo__bolhas {
+  position: absolute;
+  inset: 0;
+  opacity: var(--profundidade, 0);
 }
 
 // Feixes de luz atravessando a água, vindos da superfície
@@ -148,11 +210,6 @@ const bolhas: Enfeite[] = Array.from({ length: 16 }, (_, i) => ({
     opacity: 0.6;
     animation: oscila 31s ease-in-out infinite;
   }
-}
-
-.fundo__cardume {
-  position: absolute;
-  inset: 0;
 }
 
 .fundo__tubarao {
@@ -225,14 +282,17 @@ const bolhas: Enfeite[] = Array.from({ length: 16 }, (_, i) => ({
   }
 }
 
+// Só translada. Rotação e escala num elemento com blur(26px) obrigam o
+// navegador a re-rasterizar o borrão a cada quadro, e isso custa caro no
+// celular — o movimento lateral sozinho já dá a impressão de luz balançando.
 @keyframes oscila {
   0%,
   100% {
-    transform: translateX(0) rotate(3deg) scaleX(1);
+    transform: translateX(0);
     opacity: 0.55;
   }
   50% {
-    transform: translateX(3vw) rotate(-2deg) scaleX(1.15);
+    transform: translateX(4vw);
     opacity: 0.85;
   }
 }

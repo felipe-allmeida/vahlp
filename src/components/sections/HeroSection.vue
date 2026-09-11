@@ -2,7 +2,6 @@
   <section class="hero">
     <div class="hero__foto">
       <img :src="foto" :alt="`Foto de ${conteudo.nome}`" fetchpriority="high" />
-      <span class="hero__veu" />
     </div>
 
     <div class="hero__conteudo container">
@@ -71,26 +70,27 @@ const dataFormatada = computed(() => {
     position: absolute;
     inset: 0;
     z-index: -1;
+    // Recorte oval em vez de véu colorido: o fundo atrás dela troca de céu
+    // para água conforme a pessoa desce, e uma cor fixa não acompanharia.
+    $recorte: radial-gradient(
+      ellipse 62% 58% at 50% 46%,
+      #000 0%,
+      rgba(0, 0, 0, 0.92) 42%,
+      rgba(0, 0, 0, 0.35) 72%,
+      transparent 88%
+    );
+    -webkit-mask-image: $recorte;
+    mask-image: $recorte;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 42%;
-      opacity: 0.76;
-      filter: saturate(0.8) contrast(1.03);
+      opacity: 0.82;
+      filter: saturate(0.82) contrast(1.03);
       animation: hero-zoom 26s ease-in-out infinite alternate;
     }
-  }
-
-  &__veu {
-    position: absolute;
-    inset: 0;
-    background:
-      // o véu só abre espaço para o texto e funde a foto na água nas bordas;
-      // no centro ela aparece quase inteira
-      radial-gradient(ellipse at 50% 46%, rgba($fundo, 0.28) 0%, rgba($fundo, 0.55) 52%, rgba($fundo, 0.9) 80%, $fundo 95%),
-      linear-gradient(to bottom, rgba($fundo-raso, 0.45), transparent 32%, rgba($fundo, 0.72) 88%, $fundo 99%);
   }
 
   &__conteudo {
@@ -108,7 +108,7 @@ const dataFormatada = computed(() => {
     font-size: $font-size-xs;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: $faint;
+    color: $muted;
     margin-bottom: $spacing-md;
     animation: sobe 1s $transition-slow both;
   }
@@ -190,8 +190,9 @@ const dataFormatada = computed(() => {
     flex-direction: column;
     align-items: center;
     gap: $spacing-xs;
-    color: $faint;
+    color: $muted;
     text-decoration: none;
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.95);
     font-size: $font-size-xs;
     letter-spacing: 0.22em;
     text-transform: uppercase;

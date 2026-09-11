@@ -16,8 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import FundoAgua from './components/FundoAgua.vue'
+import { observarProfundidade } from './composables/profundidade'
 import DivisorRosa from './components/ornamentos/DivisorRosa.vue'
 import HeroSection from './components/sections/HeroSection.vue'
 import ContadorSection from './components/sections/ContadorSection.vue'
@@ -29,9 +30,14 @@ import PlaylistSection from './components/sections/PlaylistSection.vue'
 import FinalSection from './components/sections/FinalSection.vue'
 import { conteudo } from './content'
 
+let pararDeObservar: (() => void) | undefined
+
 onMounted(() => {
   document.title = `${conteudo.idade} anos de ${conteudo.nome} 🌹`
+  pararDeObservar = observarProfundidade()
 })
+
+onUnmounted(() => pararDeObservar?.())
 </script>
 
 <style lang="scss">

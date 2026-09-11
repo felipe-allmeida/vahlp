@@ -77,8 +77,8 @@ const dataFormatada = computed(() => {
       height: 100%;
       object-fit: cover;
       object-position: center 42%;
-      opacity: 0.55;
-      filter: saturate(0.7) contrast(1.02);
+      opacity: 0.76;
+      filter: saturate(0.8) contrast(1.03);
       animation: hero-zoom 26s ease-in-out infinite alternate;
     }
   }
@@ -87,8 +87,10 @@ const dataFormatada = computed(() => {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse at 50% 45%, rgba($fundo, 0.1) 0%, rgba($fundo, 0.68) 62%, $fundo 92%),
-      linear-gradient(to bottom, rgba($fundo-raso, 0.7), rgba($fundo, 0.35) 38%, $fundo 96%);
+      // o véu só abre espaço para o texto e funde a foto na água nas bordas;
+      // no centro ela aparece quase inteira
+      radial-gradient(ellipse at 50% 46%, rgba($fundo, 0.28) 0%, rgba($fundo, 0.55) 52%, rgba($fundo, 0.9) 80%, $fundo 95%),
+      linear-gradient(to bottom, rgba($fundo-raso, 0.45), transparent 32%, rgba($fundo, 0.72) 88%, $fundo 99%);
   }
 
   &__conteudo {
@@ -97,6 +99,9 @@ const dataFormatada = computed(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    // luz da superfície atrás do texto: é o que o mantém legível por cima do
+    // cabelo dela sem ter que lavar a foto toda
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.92), 0 0 42px rgba(255, 255, 255, 0.7);
   }
 
   &__eyebrow {
@@ -136,6 +141,12 @@ const dataFormatada = computed(() => {
   }
 
   &__numero {
+    // o número é preenchido por gradiente com background-clip: text, e aí a
+    // text-shadow do bloco vaza pelo glifo transparente. drop-shadow age sobre
+    // o pixel já pintado, então é ela quem dá o halo aqui.
+    text-shadow: none;
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.95))
+      drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
     font-family: $font-display;
     font-size: clamp(4rem, 18vw, 11rem);
     font-weight: 600;
